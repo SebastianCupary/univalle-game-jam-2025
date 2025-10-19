@@ -5,6 +5,7 @@ using UnityEngine;
 public class Point : MonoBehaviour
 {
     public bool Runtime = true;
+    public Rigidbody rbd;
     public Vector2 PointID;
     public List<Bar> ConnectedBars = new List<Bar>();
 
@@ -12,6 +13,12 @@ public class Point : MonoBehaviour
     {
         if (Runtime == false)
         {
+            //satic rigibody
+            if (rbd != null)
+            {
+                rbd.isKinematic = true;
+            }
+            
             PointID = transform.position;
             if(GameManager.AllPoints.ContainsKey(PointID) == false)
             {

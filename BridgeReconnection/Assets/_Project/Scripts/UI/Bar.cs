@@ -5,6 +5,9 @@ public class Bar : MonoBehaviour
     public Vector2 StartPosition;
     public GameObject BarObject;
     public float maxLength = 1f;
+    public BoxCollider BoxCollider;
+    public HingeJoint StartJoint;
+    public HingeJoint EndJoint;
 
     public void UpdateCreatingBar(Vector2 ToPosition)
     {
@@ -16,5 +19,8 @@ public class Bar : MonoBehaviour
 
         float length = dir.magnitude;
         BarObject.transform.localScale = new Vector3(length, BarObject.transform.localScale.y, BarObject.transform.localScale.z); // Adjust the x scale to match the length
+
+        //Calcular el tamaño del collider
+        BoxCollider.size = BarObject.transform.localScale;
     }
 }

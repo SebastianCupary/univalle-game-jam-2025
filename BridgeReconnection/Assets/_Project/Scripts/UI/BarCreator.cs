@@ -1,30 +1,35 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 public class BarCreator : MonoBehaviour, IPointerDownHandler
 {
+    public GameObject RoadBar;
+    public GameObject WoodBar;
     bool BarCreationStarted = false;
     public Bar CurrentBar;
+
     public GameObject barToInstantiate;
     public Transform barParent;
+
     public Point CurrentStartPoint;
     public GameObject PointToInstantiate;
     public Transform PointParent;
     public Point CurrentEndPoint;
+
     public void OnPointerDown(PointerEventData eventData)
     {
-       if (BarCreationStarted == false)
+        if (BarCreationStarted == false)
         {
             BarCreationStarted = true;
             StartBarCreation(Camera.main.ScreenToWorldPoint(eventData.position));
         }
-       else
+        else
         {
-            if(eventData.button == PointerEventData.InputButton.Left)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
                 FinishBarCreation();
             }
-            else if(eventData.button == PointerEventData.InputButton.Right)
+            else if (eventData.button == PointerEventData.InputButton.Right)
             {
                 BarCreationStarted = false;
                 DeleteCurrentBar();
@@ -36,59 +41,69 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     {
         Destroy(CurrentBar.gameObject);
         if (CurrentStartPoint.ConnectedBars.Count == 0) Destroy(CurrentStartPoint.gameObject);
-        if (CurrentEndPoint.ConnectedBars.Count == 0) Destroy(CurrentEndPoint.gameObject);
+        // The endpoint is temporary and will be destroyed anyway if not connected.
+        Destroy(CurrentEndPoint.gameObject);
     }
-
-    
 
     private void StartBarCreation(Vector2 StartPosition)
     {
-       CurrentBar = Instantiate(barToInstantiate, barParent).GetComponent<Bar>();
-        CurrentBar.StartPosition = StartPosition;
-        
-        if(GameManager.AllPoints.ContainsKey(StartPosition) == true)
+        CurrentBar = Instantiate(barToInstantiate, barParent).GetComponent<Bar>();
+        CurrentBar.StartPosition = (Vector2)Vector2Int.RoundToInt(StartPosition);
+
+        // Snap to existing point if close enough
+        if (GameManager.AllPoints.ContainsKey(CurrentBar.StartPosition))
         {
-            CurrentStartPoint = GameManager.AllPoints[StartPosition];
+            CurrentStartPoint = GameManager.AllPoints[CurrentBar.StartPosition];
         }
         else
         {
-            CurrentStartPoint = Instantiate(PointToInstantiate, StartPosition, Quaternion.identity, PointParent).GetComponent<Point>();
-            GameManager.AllPoints.Add(StartPosition, CurrentStartPoint);
+            CurrentStartPoint = Instantiate(PointToInstantiate, CurrentBar.StartPosition, Quaternion.identity, PointParent).GetComponent<Point>();
+            GameManager.AllPoints.Add(CurrentBar.StartPosition, CurrentStartPoint);
         }
 
-
-        CurrentEndPoint = Instantiate(PointToInstantiate, StartPosition, Quaternion.identity, PointParent).GetComponent<Point>();
-
+        CurrentEndPoint = Instantiate(PointToInstantiate, CurrentBar.StartPosition, Quaternion.identity, PointParent).GetComponent<Point>();
     }
 
     private void FinishBarCreation()
     {
-        if(GameManager.AllPoints.ContainsKey(CurrentEndPoint.transform.position) == true)
+        Vector2 finalEndpointPos = (Vector2)Vector2Int.RoundToInt(CurrentEndPoint.transform.position);
+
+        if (GameManager.AllPoints.ContainsKey(finalEndpointPos))
         {
             Destroy(CurrentEndPoint.gameObject);
-            CurrentEndPoint = GameManager.AllPoints[CurrentEndPoint.transform.position];
+            CurrentEndPoint = GameManager.AllPoints[finalEndpointPos];
         }
         else
         {
-            GameManager.AllPoints.Add(CurrentEndPoint.transform.position, CurrentEndPoint);
+            CurrentEndPoint.transform.position = finalEndpointPos;
+            GameManager.AllPoints.Add(finalEndpointPos, CurrentEndPoint);
         }
+
+        // Finalize connections
         CurrentStartPoint.ConnectedBars.Add(CurrentBar);
         CurrentEndPoint.ConnectedBars.Add(CurrentBar);
+
+        CurrentBar.StartJoint.connectedBody = CurrentStartPoint.rbd;
+        CurrentBar.StartJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentStartPoint.transform.position);
+
+        CurrentBar.EndJoint.connectedBody = CurrentEndPoint.rbd;
+        CurrentBar.EndJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentEndPoint.transform.position);
+
+        CurrentBar.gameObject.name = "Bar from " + CurrentStartPoint.gameObject.name + " to " + CurrentEndPoint.gameObject.name;
+
+        // Start creating the next bar from the endpoint of the last one
         StartBarCreation(CurrentEndPoint.transform.position);
-
     }
-
 
     private void Update()
     {
-        if(BarCreationStarted == true)
+        if (BarCreationStarted == true)
         {
             Vector2 EndPosition = (Vector2)Vector2Int.RoundToInt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             Vector2 Dir = EndPosition - CurrentBar.StartPosition;
             Vector2 ClampedPosition = Vector2.ClampMagnitude(Dir, CurrentBar.maxLength) + CurrentBar.StartPosition;
 
-            CurrentEndPoint.transform.position = (Vector2)Vector2Int.FloorToInt(ClampedPosition);
-            CurrentEndPoint.PointID = CurrentEndPoint.transform.position;
+            CurrentEndPoint.transform.position = (Vector2)Vector2Int.RoundToInt(ClampedPosition);
             CurrentBar.UpdateCreatingBar(CurrentEndPoint.transform.position);
         }
     }
