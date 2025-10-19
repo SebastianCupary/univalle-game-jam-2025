@@ -9,4 +9,17 @@ public class GameManager : MonoBehaviour
     {
         AllPoints.Clear();
     }
+
+    // Agrega este método para dibujar los Gizmos
+    private void OnDrawGizmos()
+    {
+        if (AllPoints.Count == 0) return;
+
+        // Dibuja una esfera roja en la posición de cada punto registrado
+        Gizmos.color = Color.red;
+        foreach (Vector2 pointPosition in AllPoints.Keys)
+        {
+            Gizmos.DrawSphere(pointPosition, 0.2f); // Dibuja una esfera de radio 0.2
+        }
+    }
 }

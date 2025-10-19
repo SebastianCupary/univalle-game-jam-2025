@@ -8,7 +8,7 @@ public class Point : MonoBehaviour
     public Vector2 PointID;
     public List<Bar> ConnectedBars = new List<Bar>();
 
-    private void Start()
+    private void Awake()
     {
         if (Runtime == false)
         {
