@@ -9,6 +9,12 @@ public class UIManager : MonoBehaviour
     public BarCreator barCreator;
     public GameManager gameManager;
 
+    [Header("Force Measurement Settings")]
+    public float measurementDuration =3.0f; // segundos de muestreo
+    [Range(0.1f,1f)] public float measurementFactor =0.75f; // factor recomendado
+    public bool applyBreakForceAfterMeasure = false; // si true, aplica automáticamente lo recomendado
+    public bool applyOnlyToRoad = true; // aplica solo a barras tipo Road
+
     public void Start()
     {
         // Evita invocar si no está asignado y registra el evento solo una vez
@@ -31,6 +37,22 @@ public class UIManager : MonoBehaviour
         gameManager.HideAllStaticSupports();
         gameManager.HideAllRuntimeSupports();
         gameManager.Resume();
+
+        // Inicia la medición de fuerzas en todas las barras para registrar picos y recomendación
+        var bars = FindObjectsOfType<Bar>(true);
+        for (int i =0; i < bars.Length; i++)
+        {
+            var b = bars[i];
+            if (b == null) continue;
+            if (applyOnlyToRoad && b.kind != Bar.BarKind.Road)
+            {
+                b.StartForceMeasurement(measurementDuration, measurementFactor, false); // solo medir
+            }
+            else
+            {
+                b.StartForceMeasurement(measurementDuration, measurementFactor, applyBreakForceAfterMeasure);
+            }
+        }
     }
 
     public void Restart()

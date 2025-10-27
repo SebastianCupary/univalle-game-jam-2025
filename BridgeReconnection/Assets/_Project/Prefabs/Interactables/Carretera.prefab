@@ -133,7 +133,23 @@ MonoBehaviour:
   bCollider: {fileID: 8254076284372624814}
   startJoint: {fileID: 3907382529753411502}
   endJoint: {fileID: 759419324674309539}
+  breakForce: 300000
+  breakTorque: Infinity
+  autoCalibrateOnStart: 0
+  calibrationDuration: 1
+  calibrationFactor: 0.75
   colliderEndMargin: 0.14
+  kind: 0
+  woodUseSpring: 1
+  woodSpring: 0
+  woodDamper: 15
+  woodLinearDrag: 1
+  woodAngularDrag: 2
+  roadDefaultBreakForce: 400
+  woodDefaultBreakForce: 800
+  roadMinBreakForce: 400
+  woodMinBreakForce: 800
+  woodStrengthMultiplier: 2
 --- !u!54 &7384613962508961889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,7 +210,7 @@ HingeJoint:
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
-  m_BreakForce: Infinity
+  m_BreakForce: 260
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -233,7 +249,7 @@ HingeJoint:
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
-  m_BreakForce: Infinity
+  m_BreakForce: 260
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
