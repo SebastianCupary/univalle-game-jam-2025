@@ -99,6 +99,12 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
         CurrentStartPoint.ConnectedBars.Add(CurrentBar);
         CurrentEndPoint.ConnectedBars.Add(CurrentBar);
 
+        CurrentBar.startJoint.connectedBody = CurrentStartPoint.rbd;
+        CurrentBar.startJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentBar.StartPosition); ;
+        CurrentBar.endJoint.connectedBody = CurrentEndPoint.rbd;    
+        CurrentBar.endJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentEndPoint.transform.position);
+
+
         StartBarCreation(CurrentEndPoint.transform.position);
     }
 
