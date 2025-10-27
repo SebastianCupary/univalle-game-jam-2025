@@ -13,10 +13,29 @@ public class GameManager : MonoBehaviour
         Pause();
     }
 
+    // Reconstruye el índice con todos los Point existentes en escena (estáticos y runtime)
+    [ContextMenu("Rebuild Points Index (Debug)")]
+    public void RebuildAllPointsIndex()
+    {
+        AllPoints.Clear();
+        var points = FindObjectsOfType<Point>(true);
+        for (int i =0; i < points.Length; i++)
+        {
+            var p = points[i];
+            if (p == null) continue;
+            p.PointID = p.transform.position;
+            if (!AllPoints.ContainsKey(p.PointID))
+            {
+                AllPoints.Add(p.PointID, p);
+            }
+        }
+    }
+
     // Usa este menú contextual para iniciar el juego desde el editor
     [ContextMenu("Start Game")]
     public void StartGame()
     {
+        RebuildAllPointsIndex();
         HideAllStaticSupports();
         HideAllRuntimeSupports();
         Resume();
@@ -26,40 +45,40 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Show Supports (Debug)")]
     public void ShowAllSupportsDebug()
     {
-        SetVisibilityForSupports(true, includeRuntime:true);
+        SetVisibilityForSupports(true, includeRuntime: true);
     }
 
-    private void HideAllStaticSupports()
+    public void HideAllStaticSupports()
     {
-        SetVisibilityForSupports(false, includeRuntime:false);
+        SetVisibilityForSupports(false, includeRuntime: false);
     }
 
-    private void HideAllRuntimeSupports()
+    public void HideAllRuntimeSupports()
     {
-        SetVisibilityForSupports(false, includeRuntime:true, onlyRuntime:true);
+        SetVisibilityForSupports(false, includeRuntime: true, onlyRuntime: true);
     }
 
     private void SetVisibilityForSupports(bool visible, bool includeRuntime, bool onlyRuntime = false)
     {
-        foreach (var kvp in AllPoints)  // Recorre todos los puntos
+        foreach (var kvp in AllPoints)
         {
-            var point = kvp.Value; // obtiene el punto  
-            if (point == null) continue; // punto nulo, salta   
-            bool isRuntime = point.Runtime; // verifica si es runtime
-            if (onlyRuntime && !isRuntime) continue; // si solo runtime y no lo es, salta
-            if (!includeRuntime && isRuntime) continue; // si no incluye runtime y lo es, salta
-            if (!isRuntime) // punto estático
+            var point = kvp.Value;
+            if (point == null) continue;
+            bool isRuntime = point.Runtime;
+            if (onlyRuntime && !isRuntime) continue;
+            if (!includeRuntime && isRuntime) continue;
+            if (!isRuntime)
             {
                 point.SetSupportVisible(visible); // usa API de Point para estáticos
             }
             else
             {
                 // Ocultar/mostrar renderers de runtime directamente
-                var renderers = point.GetComponentsInChildren<Renderer>(true); // obtiene renderers
+                var renderers = point.GetComponentsInChildren<Renderer>(true);
                 for (int i =0; i < renderers.Length; i++)
                 {
-                    var r = renderers[i]; // obtiene renderer
-                    if (r != null) r.enabled = visible; // establece visibilidad            
+                    var r = renderers[i];
+                    if (r != null) r.enabled = visible;
                 }
             }
         }

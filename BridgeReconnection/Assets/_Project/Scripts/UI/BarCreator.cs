@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class BarCreator : MonoBehaviour, IPointerDownHandler
 {
+    public GameObject RoadBar;
+    public GameObject WoodBar;
     bool BarCreationStarted = false;
     public Bar CurrentBar;
     public GameObject barToInstantiate;
