@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3907382529753411502}
   - component: {fileID: 759419324674309539}
   m_Layer: 0
-  m_Name: Carretera
+  m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.000011857661, y: -0.006747097, z: -0.0017978617, w: 0.9999757}
   m_LocalPosition: {x: 1.5030909, y: 1.9446574, z: -5.8459134}
-  m_LocalScale: {x: 1.0720161, y: 0.24088523, z: 0.8822412}
+  m_LocalScale: {x: 1.0720161, y: 0.05994911, z: 0.8822412}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fdc14563ea27884086356b05a03d1a3, type: 2}
+  - {fileID: 2100000, guid: 3a06d3bf33a9a924dacbe19eeaddd31f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,17 +129,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bar
   StartPosition: {x: 0, y: 0}
   BarObject: {fileID: 7477259695183221192}
-  maxLength: 3
+  maxLength: 5
   bCollider: {fileID: 8254076284372624814}
   startJoint: {fileID: 3907382529753411502}
   endJoint: {fileID: 759419324674309539}
-  breakForce: 300000
+  breakForce: 30
   breakTorque: Infinity
   autoCalibrateOnStart: 0
   calibrationDuration: 1
   calibrationFactor: 0.75
   colliderEndMargin: 0.14
-  kind: 0
+  kind: 1
   woodUseSpring: 1
   woodSpring: 0
   woodDamper: 15
@@ -210,7 +210,7 @@ HingeJoint:
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
-  m_BreakForce: 260
+  m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
@@ -249,7 +249,7 @@ HingeJoint:
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
-  m_BreakForce: 260
+  m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
