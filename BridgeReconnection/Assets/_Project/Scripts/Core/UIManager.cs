@@ -14,6 +14,10 @@ public class UIManager : MonoBehaviour
     [Range(0.1f,1f)] public float measurementFactor =0.75f; // factor recomendado
     public bool applyBreakForceAfterMeasure = false; // si true, aplica automáticamente lo recomendado
     public bool applyOnlyToRoad = true; // aplica solo a barras tipo Road
+    public string levelName = "Nivel_1";
+
+    [Header("Car")]
+    public car carController; // referencia al script del auto
 
     public void Start()
     {
@@ -53,11 +57,17 @@ public class UIManager : MonoBehaviour
                 b.StartForceMeasurement(measurementDuration, measurementFactor, applyBreakForceAfterMeasure);
             }
         }
+
+        // Iniciar conducción automática del auto
+        if (carController != null)
+        {
+            carController.StartAutoDrive();
+        }
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("BridgeTest");
+        SceneManager.LoadScene(levelName);
     }
     public void ChangeBar(int myBarType)
     {

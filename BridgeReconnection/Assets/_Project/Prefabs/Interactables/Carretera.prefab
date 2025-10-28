@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7384613962508961889}
   - component: {fileID: 3907382529753411502}
   - component: {fileID: 759419324674309539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Carretera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.000011857661, y: -0.006747097, z: -0.0017978617, w: 0.9999757}
   m_LocalPosition: {x: 1.5030909, y: 1.9446574, z: -5.8459134}
-  m_LocalScale: {x: 1.0720161, y: 0.24088523, z: 0.8822412}
+  m_LocalScale: {x: 2, y: 0.13789235, z: 0.8822412}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fdc14563ea27884086356b05a03d1a3, type: 2}
+  - {fileID: 2100000, guid: 34463172a1434af46809610181bc27e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,9 +145,9 @@ MonoBehaviour:
   woodDamper: 15
   woodLinearDrag: 1
   woodAngularDrag: 2
-  roadDefaultBreakForce: 400
+  roadDefaultBreakForce: 300
   woodDefaultBreakForce: 800
-  roadMinBreakForce: 400
+  roadMinBreakForce: 300
   woodMinBreakForce: 800
   woodStrengthMultiplier: 2
 --- !u!54 &7384613962508961889
@@ -175,7 +175,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!59 &3907382529753411502
 HingeJoint:
