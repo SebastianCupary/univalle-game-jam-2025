@@ -24,9 +24,6 @@ public class Point : MonoBehaviour
             if (rbd != null)
             {
                 rbd.useGravity = false;
-                // Poner velocidades en0 ANTES de volver cinemático
-                //rbd.linearVelocity = Vector3.zero;
-                //rbd.angularVelocity = Vector3.zero;
                 rbd.constraints = RigidbodyConstraints.FreezeAll;
                 rbd.isKinematic = true;
             }
@@ -40,6 +37,31 @@ public class Point : MonoBehaviour
         else
         {
             // Puntos generados en runtime: dinámicos por defecto
+            if (rbd != null)
+            {
+                rbd.isKinematic = false;
+                rbd.useGravity = true;
+                rbd.constraints = RigidbodyConstraints.None;
+            }
+        }
+    }
+
+    // Facilita la configuración desde el editor cuando cambias Runtime
+    private void OnValidate()
+    {
+        if (rbd == null) rbd = GetComponent<Rigidbody>();
+        if (Runtime == false)
+        {
+            if (rbd == null) rbd = gameObject.AddComponent<Rigidbody>();
+            rbd.useGravity = false;
+            rbd.constraints = RigidbodyConstraints.FreezeAll;
+            rbd.isKinematic = true;
+            // Asegura posicion en grilla para que coincida con AllPoints
+            transform.position = Vector3Int.RoundToInt(transform.position);
+            PointID = transform.position;
+        }
+        else
+        {
             if (rbd != null)
             {
                 rbd.isKinematic = false;
@@ -84,5 +106,36 @@ public class Point : MonoBehaviour
             }
         }
         // En juego activo (no pausado), no forzamos posición para permitir la física
+    }
+
+    // Utilidades de editor para configurar soportes estáticos rápidamente
+    [ContextMenu("Snap To Grid (Round Position)")]
+    private void SnapToGrid()
+    {
+        transform.position = Vector3Int.RoundToInt(transform.position);
+    }
+
+    [ContextMenu("Convert To Static Support (Freeze + Setup)")]
+    private void ConvertToStaticSupport()
+    {
+        Runtime = false;
+        if (rbd == null) rbd = GetComponent<Rigidbody>();
+        if (rbd == null) rbd = gameObject.AddComponent<Rigidbody>();
+        rbd.useGravity = false;
+        rbd.constraints = RigidbodyConstraints.FreezeAll;
+        rbd.isKinematic = true;
+        transform.position = Vector3Int.RoundToInt(transform.position);
+        PointID = transform.position;
+    }
+
+    [ContextMenu("Register In GameManager Index")]
+    private void RegisterInGameManager()
+    {
+        PointID = (Vector2)transform.position;  
+        if (!GameManager.AllPoints.ContainsKey(PointID))
+        {
+            GameManager.AllPoints.Add(PointID, this);
+
+        }
     }
 }
