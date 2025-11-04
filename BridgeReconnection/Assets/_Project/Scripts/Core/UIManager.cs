@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public Button WoodButton;
     public BarCreator barCreator;
     public GameManager gameManager;
+    public BudgetManager budgetManager;
 
     [Header("Force Measurement Settings")]
     public float measurementDuration =3.0f; // segundos de muestreo
@@ -23,8 +24,17 @@ public class UIManager : MonoBehaviour
 
     public GameObject CreationOptionsUI; // Reference to the creation options UI GameObject
 
+    [Header("Budget per Level")]
+    public int levelBudget =1000; // Configurable por nivel en el inspector
+
     public void Start()
     {
+        // Inicializa presupuesto del nivel (si existe BudgetManager en escena)
+        if (BudgetManager.Instance != null)
+        {
+            BudgetManager.Instance.Initialize(levelBudget);
+        }
+
         // Evita invocar si no está asignado y registra el evento solo una vez
         if (RoadButton != null)
         {

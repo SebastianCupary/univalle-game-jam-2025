@@ -15,12 +15,15 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     public Transform PointParent;
     public Point CurrentEndPoint;
 
+    // Costos por tipo de barra
+    [Header("Budget Costs")] public int roadCost =100; public int woodCost =50;
+
     // Historial por material (para botón de deshacer)
     private readonly List<Bar> _roadHistory = new List<Bar>();
     private readonly List<Bar> _woodHistory = new List<Bar>();
 
     /// <summary>
-    /// MÉTODO OnPointerDown CORREGIDO
+    /// MÉTODO OnPointerDown CORREGIDO + Control de presupuesto
     /// </summary>
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -30,15 +33,18 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
 
         if (BarCreationStarted == false)
         {
-            // --- LA CLAVE DE LA SOLUCIÓN ---
-            // Solo inicia la creación si el clic se hizo sobre un punto existente.
+            // Solo inicia la creación si el clic se hizo sobre un punto existente y hay presupuesto
             if (GameManager.AllPoints.ContainsKey(gridPosition))
             {
+                if (!CanAffordSelectedKind())
+                {
+                    Debug.LogWarning("No hay presupuesto suficiente para iniciar esta barra.");
+                    return;
+                }
                 BarCreationStarted = true;
                 StartBarCreation(gridPosition);
             }
             // Si no se encuentra un punto en esa posición, no hace nada.
-            // Esto evita que se creen puntos nuevos y previene el error.
         }
         else
         {
@@ -55,10 +61,19 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     }
 
     /// <summary>
-    /// MÉTODO StartBarCreation SIMPLIFICADO Y CORREGIDO
+    /// MÉTODO StartBarCreation SIMPLIFICADO Y CORREGIDO + guardas de presupuesto para cadenas
     /// </summary>
     private void StartBarCreation(Vector2 StartPosition)
     {
+        // Si no hay presupuesto para crear otra barra del tipo seleccionado, no continúes con la cadena
+        if (!CanAffordSelectedKind())
+        {
+            BarCreationStarted = false;
+            CurrentBar = null;
+            CurrentEndPoint = null;
+            return;
+        }
+
         // Asegura clave exacta de grilla y recuperación segura
         Vector2 key = new Vector2(Mathf.Round(StartPosition.x), Mathf.Round(StartPosition.y));
         if (!GameManager.AllPoints.TryGetValue(key, out CurrentStartPoint))
@@ -98,6 +113,21 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
 
     private void FinishBarCreation()
     {
+        if (CurrentBar == null || CurrentEndPoint == null) { BarCreationStarted = false; return; }
+
+        // Verificar presupuesto antes de confirmar la creación
+        int cost = GetCostForKind(CurrentBar.kind);
+        if (BudgetManager.Instance != null && !BudgetManager.Instance.CanAfford(cost))
+        {
+            // Cancelar esta barra sin eliminar el punto inicial
+            if (CurrentBar != null) Destroy(CurrentBar.gameObject);
+            if (CurrentEndPoint != null) Destroy(CurrentEndPoint.gameObject);
+            CurrentBar = null; CurrentEndPoint = null;
+            BarCreationStarted = false;
+            Debug.LogWarning("Presupuesto insuficiente para colocar la barra.");
+            return;
+        }
+
         // Recalcular y forzar posición de grilla para usar exactamente la misma clave
         Vector2 finalPosition = new Vector2(
             Mathf.Round(CurrentEndPoint.transform.position.x),
@@ -124,6 +154,12 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
         CurrentBar.endJoint.connectedBody = CurrentEndPoint.rbd;
         CurrentBar.endJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentEndPoint.transform.position);
 
+        // Cobrar presupuesto una vez creada
+        if (BudgetManager.Instance != null)
+        {
+            BudgetManager.Instance.Spend(cost);
+        }
+
         // Registrar en historial por material
         if (CurrentBar.kind == Bar.BarKind.Road)
         {
@@ -134,8 +170,17 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
             _woodHistory.Add(CurrentBar);
         }
 
-        // Iniciar siguiente barra desde la exacta clave usada
-        StartBarCreation(finalPosition);
+        // Iniciar siguiente barra desde la exacta clave usada (solo si hay presupuesto para otra)
+        if (CanAffordSelectedKind())
+        {
+            StartBarCreation(finalPosition);
+        }
+        else
+        {
+            BarCreationStarted = false;
+            CurrentBar = null;
+            CurrentEndPoint = null;
+        }
     }
 
     private void Update()
@@ -193,6 +238,13 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
         if (sp != null) sp.ConnectedBars.Remove(last);
         if (ep != null) ep.ConnectedBars.Remove(last);
 
+        // Reembolsar presupuesto según tipo
+        if (BudgetManager.Instance != null)
+        {
+            int refund = GetCostForKind(last.kind);
+            BudgetManager.Instance.Refund(refund);
+        }
+
         // Eliminar puntos runtime huérfanos
         CleanupPointIfOrphan(sp);
         CleanupPointIfOrphan(ep);
@@ -213,5 +265,30 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
             }
             Destroy(p.gameObject);
         }
+    }
+
+    // ======== Presupuesto helpers ========
+    private int GetCostForKind(Bar.BarKind kind)
+    {
+        return kind == Bar.BarKind.WoodSupport ? woodCost : roadCost;
+    }
+
+    private Bar.BarKind GetSelectedKind()
+    {
+        var prefab = barToInstantiate;
+        var kind = Bar.BarKind.Road;
+        if (prefab != null)
+        {
+            var b = prefab.GetComponent<Bar>();
+            if (b != null) kind = b.kind;
+        }
+        return kind;
+    }
+
+    private bool CanAffordSelectedKind()
+    {
+        if (BudgetManager.Instance == null) return true; // sin gestor => sin límite
+        int cost = GetCostForKind(GetSelectedKind());
+        return BudgetManager.Instance.CanAfford(cost);
     }
 }
