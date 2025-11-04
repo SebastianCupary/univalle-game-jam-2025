@@ -59,14 +59,21 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     /// </summary>
     private void StartBarCreation(Vector2 StartPosition)
     {
-        // Ahora podemos asumir que el punto de inicio siempre existe,
-        // porque la verificación ya se hizo en OnPointerDown.
-        CurrentStartPoint = GameManager.AllPoints[StartPosition];
+        // Asegura clave exacta de grilla y recuperación segura
+        Vector2 key = new Vector2(Mathf.Round(StartPosition.x), Mathf.Round(StartPosition.y));
+        if (!GameManager.AllPoints.TryGetValue(key, out CurrentStartPoint))
+        {
+            // Fallback robusto: si el punto no existe (p.ej. por clon/copiar), créalo y regístralo
+            var p = Instantiate(PointToInstantiate, key, Quaternion.identity, PointParent).GetComponent<Point>();
+            p.PointID = key;
+            if (!GameManager.AllPoints.ContainsKey(key)) GameManager.AllPoints.Add(key, p);
+            CurrentStartPoint = p;
+        }
 
         // Se crea la barra y el punto final temporal como antes.
         CurrentBar = Instantiate(barToInstantiate, barParent).GetComponent<Bar>();
-        CurrentBar.StartPosition = StartPosition;
-        CurrentEndPoint = Instantiate(PointToInstantiate, StartPosition, Quaternion.identity, PointParent).GetComponent<Point>();
+        CurrentBar.StartPosition = key;
+        CurrentEndPoint = Instantiate(PointToInstantiate, key, Quaternion.identity, PointParent).GetComponent<Point>();
     }
 
     private void DeleteCurrentBar()
@@ -91,7 +98,13 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
 
     private void FinishBarCreation()
     {
-        Vector2 finalPosition = CurrentEndPoint.transform.position;
+        // Recalcular y forzar posición de grilla para usar exactamente la misma clave
+        Vector2 finalPosition = new Vector2(
+            Mathf.Round(CurrentEndPoint.transform.position.x),
+            Mathf.Round(CurrentEndPoint.transform.position.y)
+        );
+        CurrentEndPoint.transform.position = finalPosition;
+
         if (GameManager.AllPoints.ContainsKey(finalPosition))
         {
             Destroy(CurrentEndPoint.gameObject);
@@ -121,7 +134,8 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
             _woodHistory.Add(CurrentBar);
         }
 
-        StartBarCreation(CurrentEndPoint.transform.position);
+        // Iniciar siguiente barra desde la exacta clave usada
+        StartBarCreation(finalPosition);
     }
 
     private void Update()

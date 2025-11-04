@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         AllPoints.Clear();
+        // Construye el índice al cargar escena, así los anclajes clonados quedan disponibles
+        RebuildAllPointsIndex();
         Pause();
     }
 
@@ -23,7 +25,10 @@ public class GameManager : MonoBehaviour
         {
             var p = points[i];
             if (p == null) continue;
-            p.PointID = p.transform.position;
+            // Redondear posición a grilla para tener claves consistentes
+            var rounded = Vector2Int.RoundToInt(p.transform.position);
+            p.transform.position = new Vector3(rounded.x, rounded.y, p.transform.position.z);
+            p.PointID = rounded;
             if (!AllPoints.ContainsKey(p.PointID))
             {
                 AllPoints.Add(p.PointID, p);
