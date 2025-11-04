@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class BarCreator : MonoBehaviour, IPointerDownHandler
 {
@@ -13,6 +14,10 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     public GameObject PointToInstantiate;
     public Transform PointParent;
     public Point CurrentEndPoint;
+
+    // Historial por material (para botón de deshacer)
+    private readonly List<Bar> _roadHistory = new List<Bar>();
+    private readonly List<Bar> _woodHistory = new List<Bar>();
 
     /// <summary>
     /// MÉTODO OnPointerDown CORREGIDO
@@ -69,7 +74,7 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
         if (CurrentBar != null) Destroy(CurrentBar.gameObject);
         if (CurrentEndPoint != null) Destroy(CurrentEndPoint.gameObject);
 
-        if (CurrentStartPoint != null && CurrentStartPoint.ConnectedBars.Count == 0 && CurrentStartPoint.Runtime == true)
+        if (CurrentStartPoint != null && CurrentStartPoint.ConnectedBars.Count ==0 && CurrentStartPoint.Runtime == true)
         {
             if (GameManager.AllPoints.ContainsKey(CurrentStartPoint.PointID))
             {
@@ -102,10 +107,19 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
         CurrentEndPoint.ConnectedBars.Add(CurrentBar);
 
         CurrentBar.startJoint.connectedBody = CurrentStartPoint.rbd;
-        CurrentBar.startJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentBar.StartPosition); ;
-        CurrentBar.endJoint.connectedBody = CurrentEndPoint.rbd;    
+        CurrentBar.startJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentBar.StartPosition);
+        CurrentBar.endJoint.connectedBody = CurrentEndPoint.rbd;
         CurrentBar.endJoint.anchor = CurrentBar.transform.InverseTransformPoint(CurrentEndPoint.transform.position);
 
+        // Registrar en historial por material
+        if (CurrentBar.kind == Bar.BarKind.Road)
+        {
+            _roadHistory.Add(CurrentBar);
+        }
+        else // WoodSupport
+        {
+            _woodHistory.Add(CurrentBar);
+        }
 
         StartBarCreation(CurrentEndPoint.transform.position);
     }
@@ -131,6 +145,59 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
             CurrentEndPoint.transform.position = finalPosition;
             CurrentEndPoint.PointID = finalPosition;
             CurrentBar.UpdateCreatingBar(finalPosition);
+        }
+    }
+
+    // ========== UNDO API ==========
+
+    public void UndoLastRoadBar() => UndoLastFromList(_roadHistory);
+    public void UndoLastWoodBar() => UndoLastFromList(_woodHistory);
+
+    // Usa el prefab actualmente seleccionado para decidir qué material deshacer.
+    public void UndoLastBarOfCurrentKind()
+    {
+        var prefab = barToInstantiate;
+        Bar.BarKind kind = Bar.BarKind.Road;
+        if (prefab != null)
+        {
+            var b = prefab.GetComponent<Bar>();
+            if (b != null) kind = b.kind;
+        }
+        UndoLastFromList(kind == Bar.BarKind.Road ? _roadHistory : _woodHistory);
+    }
+
+    private void UndoLastFromList(List<Bar> list)
+    {
+        if (list == null || list.Count ==0) return;
+        var last = list[list.Count -1];
+        list.RemoveAt(list.Count -1);
+        if (last == null) return;
+
+        // Quitar referencias en puntos conectados
+        var sp = last.startJoint != null && last.startJoint.connectedBody != null ? last.startJoint.connectedBody.GetComponent<Point>() : null;
+        var ep = last.endJoint != null && last.endJoint.connectedBody != null ? last.endJoint.connectedBody.GetComponent<Point>() : null;
+        if (sp != null) sp.ConnectedBars.Remove(last);
+        if (ep != null) ep.ConnectedBars.Remove(last);
+
+        // Eliminar puntos runtime huérfanos
+        CleanupPointIfOrphan(sp);
+        CleanupPointIfOrphan(ep);
+
+        Destroy(last.gameObject);
+    }
+
+    private void CleanupPointIfOrphan(Point p)
+    {
+        if (p == null) return;
+        // Limpia nulos por seguridad
+        p.ConnectedBars.RemoveAll(b => b == null);
+        if (p.Runtime && p.ConnectedBars.Count ==0)
+        {
+            if (GameManager.AllPoints.ContainsKey(p.PointID))
+            {
+                GameManager.AllPoints.Remove(p.PointID);
+            }
+            Destroy(p.gameObject);
         }
     }
 }

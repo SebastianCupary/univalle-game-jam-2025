@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public bool applyOnlyToRoad = true; // aplica solo a barras tipo Road
     public string levelName = "Nivel_1";
 
+    public Image gridImage; // referencia a la imagen de la cuadrícula
+
     [Header("Car")]
     public car carController; // referencia al script del auto
 
@@ -39,6 +41,10 @@ public class UIManager : MonoBehaviour
         }
 
         CreationOptionsUI.SetActive(false); // Oculta las opciones de creación
+        if (gridImage != null)
+        {
+            gridImage.enabled = false; // Oculta la cuadrícula
+        }
 
         // Asegura que el índice esté poblado antes de ocultar
         gameManager.RebuildAllPointsIndex();
