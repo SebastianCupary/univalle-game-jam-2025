@@ -5190,7 +5190,7 @@ MonoBehaviour:
   CreationButtonsUI: {fileID: 1326057995}
   restartButton: {fileID: 46547284}
   nextLevelButton: {fileID: 1107973902}
-  nextLevelName: Nivel_2
+  nextLevelName: Nivel_3
 --- !u!65 &1245967988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7280,7 +7280,7 @@ PrefabInstance:
     - target: {fileID: -8770906241266521433, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 21366f98ee0b9cf44bf3d0abfe92f31e, type: 2}
+      objectReference: {fileID: 2100000, guid: 0370ab7aee8123148b4467f7d726e4f7, type: 2}
     - target: {fileID: -8679921383154817045, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -7352,7 +7352,7 @@ PrefabInstance:
     - target: {fileID: -6430278170815594731, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 21366f98ee0b9cf44bf3d0abfe92f31e, type: 2}
+      objectReference: {fileID: 2100000, guid: 0370ab7aee8123148b4467f7d726e4f7, type: 2}
     - target: {fileID: -5215067909958352322, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: m_Name
       value: RightFrontWheel
@@ -7372,11 +7372,11 @@ PrefabInstance:
     - target: {fileID: -1200936981120376144, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 21366f98ee0b9cf44bf3d0abfe92f31e, type: 2}
+      objectReference: {fileID: 2100000, guid: 0370ab7aee8123148b4467f7d726e4f7, type: 2}
     - target: {fileID: -681148170750471880, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 21366f98ee0b9cf44bf3d0abfe92f31e, type: 2}
+      objectReference: {fileID: 2100000, guid: 0370ab7aee8123148b4467f7d726e4f7, type: 2}
     - target: {fileID: -135540446982544021, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.0889
@@ -7440,7 +7440,7 @@ PrefabInstance:
     - target: {fileID: 2722585140009749322, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 21366f98ee0b9cf44bf3d0abfe92f31e, type: 2}
+      objectReference: {fileID: 2100000, guid: 0370ab7aee8123148b4467f7d726e4f7, type: 2}
     - target: {fileID: 3041441000460885727, guid: d90863465eb057f4d906b5f13d42aa89, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.0889
