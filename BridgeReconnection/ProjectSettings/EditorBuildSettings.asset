@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/_DevScenes/BridgeTest.unity
     guid: 3ee9f77c6e480704d8d0b35a19f35f3f
+  - enabled: 1
+    path: Assets/_Project/Scenes/Nivel_2.unity
+    guid: 59e802bd19225e74ca9a69b37b0a42c8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

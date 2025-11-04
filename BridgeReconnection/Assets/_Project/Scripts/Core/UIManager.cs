@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     [Header("Car")]
     public car carController; // referencia al script del auto
 
+    public GameObject CreationOptionsUI; // Reference to the creation options UI GameObject
+
     public void Start()
     {
         // Evita invocar si no está asignado y registra el evento solo una vez
@@ -35,6 +37,8 @@ public class UIManager : MonoBehaviour
             Debug.LogError("UIManager: GameManager no asignado en el inspector.");
             return;
         }
+
+        CreationOptionsUI.SetActive(false); // Oculta las opciones de creación
 
         // Asegura que el índice esté poblado antes de ocultar
         gameManager.RebuildAllPointsIndex();
