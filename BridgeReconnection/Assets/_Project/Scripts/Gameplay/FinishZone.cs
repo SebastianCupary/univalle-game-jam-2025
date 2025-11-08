@@ -16,8 +16,7 @@ public class FinishZone : MonoBehaviour
  public string missingCoinsMessage = "Nivel Incompleto Monedas Faltantes: {0}";
 
  [Header("UI Elements to Hide on Finish")] 
- public GameObject CoinCounterUI; // contador de monedas
- public GameObject CreationButtonsUI; // botones de creación
+ public GameObject ControllerUI; // botones de control
 
  [Header("Finish Buttons")] 
  public Button restartButton; 
@@ -67,8 +66,8 @@ public class FinishZone : MonoBehaviour
 
  private void ShowFinishUI(bool success, string text)
  {
- if (CoinCounterUI) CoinCounterUI.SetActive(false);
- if (CreationButtonsUI) CreationButtonsUI.SetActive(false);
+
+ if (ControllerUI) ControllerUI.SetActive(false);
 
  if (messageTMP) messageTMP.text = text;
  if (completePanel) completePanel.SetActive(true);

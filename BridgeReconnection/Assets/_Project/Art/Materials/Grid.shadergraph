@@ -946,7 +946,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Grid",
     "m_DefaultReferenceName": "_Grid",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_Grid",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
