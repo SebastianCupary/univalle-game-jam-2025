@@ -3283,7 +3283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970dc0591bca50e48aa1a80a61e8b27c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishZone
-  requiredCoins: 2
+  requiredCoins: 3
   stopCarOnEnter: 1
   forceTrigger: 1
   completePanel: {fileID: 997375746}
@@ -3295,7 +3295,7 @@ MonoBehaviour:
   restartButton: {fileID: 997375744}
   nextLevelButton: {fileID: 997375743}
   levelsButton: {fileID: 997375745}
-  nextLevelName: Nivel_Fin
+  nextLevelName: Niveles
   levelMenu: Niveles
 --- !u!65 &1245967988
 BoxCollider:
