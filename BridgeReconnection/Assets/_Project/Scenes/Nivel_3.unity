@@ -466,6 +466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &253521751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7859156678399963686, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 24504883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,6 +2508,27 @@ MonoBehaviour:
   barCreator: {fileID: 24504896}
   gameManager: {fileID: 485732008}
   budgetManager: {fileID: 676067930}
+  objectivePanel: {fileID: 253521751}
+  objectiveImage: {fileID: 1324519896}
+  fallbackObjectiveText: 
+  fallbackObjectiveSprite: {fileID: -1493103565, guid: 5d87fbfdb3246a74d88f5b6f9ba596db, type: 3}
+  levelObjectives:
+  - sceneName: Nivel_1
+    objectiveSprite: {fileID: 965676065, guid: 204c613e328a17b4e97b98cebcf2e23c, type: 3}
+    objectiveText: 
+  - sceneName: Nivel_2
+    objectiveSprite: {fileID: -1755337693, guid: 99a9d388dd0532040a4b69526b96acc3, type: 3}
+    objectiveText: 
+  - sceneName: Nivel_3
+    objectiveSprite: {fileID: -1240552048, guid: 22db87d45fb56974582b241a8b3242f9, type: 3}
+    objectiveText: 
+  - sceneName: Nivel_4
+    objectiveSprite: {fileID: 1835705956, guid: 235b9c0d2ce54fb409a61b3924d942e6, type: 3}
+    objectiveText: 
+  - sceneName: Nivel_5
+    objectiveSprite: {fileID: -1418111351, guid: 1b9c05442c28b5048b81aaf62dad0e4a, type: 3}
+    objectiveText: 
+  objectiveTextTMP: {fileID: 0}
   measurementDuration: 3
   measurementFactor: 0.75
   applyBreakForceAfterMeasure: 0
@@ -2512,6 +2538,7 @@ MonoBehaviour:
   carController: {fileID: 2015735192}
   CreationOptionsUI: {fileID: 24504899}
   levelBudget: 2000
+  tutorialPanel: {fileID: 0}
   backScene: Niveles
 --- !u!1 &1189555523
 GameObject:
@@ -2903,6 +2930,17 @@ Transform:
   - {fileID: 674945562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1324519896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8442692862775937993, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 24504883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1337826894
 GameObject:
   m_ObjectHideFlags: 0

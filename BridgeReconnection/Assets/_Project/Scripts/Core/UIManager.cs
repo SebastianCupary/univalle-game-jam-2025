@@ -1,6 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System; // para Serializable
+using System.Collections.Generic;
+
+[Serializable]
+public struct LevelObjective
+{
+    public string sceneName; // nombre exacto de la escena
+    public Sprite objectiveSprite; // imagen a mostrar
+    public string objectiveText; // opcional (si tienes un TMP/Text para mostrar)
+}
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +19,13 @@ public class UIManager : MonoBehaviour
     public BarCreator barCreator;
     public GameManager gameManager;
     public BudgetManager budgetManager;
+
+    [Header("Objective Popup")] public GameObject objectivePanel; // panel / imagen objetivo al iniciar nivel
+    public Image objectiveImage; // asigna el Image hijo del panel
+    [TextArea] public string fallbackObjectiveText; // texto por defecto si no se encuentra
+    public Sprite fallbackObjectiveSprite; // sprite por defecto
+    public List<LevelObjective> levelObjectives = new List<LevelObjective>(); // lista por nivel
+    public TMPro.TMP_Text objectiveTextTMP; // opcional (asignar si quieres texto)
 
     [Header("Force Measurement Settings")]
     public float measurementDuration =3.0f; // segundos de muestreo
@@ -27,6 +44,8 @@ public class UIManager : MonoBehaviour
     [Header("Budget per Level")]
     public int levelBudget =1000; // Configurable por nivel en el inspector
 
+    public TutorialPanel tutorialPanel; // tutorial
+
     public string backScene = "Niveles";
     public void Start()
     {
@@ -41,11 +60,45 @@ public class UIManager : MonoBehaviour
         {
             RoadButton.onClick.Invoke();
         }
+
+        SetupObjectiveForCurrentScene();
+    }
+
+    private void SetupObjectiveForCurrentScene()
+    {
+        if (objectivePanel == null) return;
+        string currentScene = SceneManager.GetActiveScene().name;
+        LevelObjective? found = null;
+        for (int i =0; i < levelObjectives.Count; i++)
+        {
+            if (string.Equals(levelObjectives[i].sceneName, currentScene, StringComparison.OrdinalIgnoreCase))
+            {
+                found = levelObjectives[i];
+                break;
+            }
+        }
+        if (found.HasValue)
+        {
+            if (objectiveImage && found.Value.objectiveSprite) objectiveImage.sprite = found.Value.objectiveSprite;
+            if (objectiveTextTMP) objectiveTextTMP.text = string.IsNullOrEmpty(found.Value.objectiveText) ? fallbackObjectiveText : found.Value.objectiveText;
+        }
+        else
+        {
+            if (objectiveImage && fallbackObjectiveSprite) objectiveImage.sprite = fallbackObjectiveSprite;
+            if (objectiveTextTMP) objectiveTextTMP.text = fallbackObjectiveText;
+        }
+        objectivePanel.SetActive(true); // mostrará el objetivo; usa CloseOnClick para cerrarlo
     }
 
     public void StartGame()
     {
         AudioController.instance.ButtonPressed();
+        // Cancelar cualquier barra en construcción antes de iniciar
+        if (barCreator != null && barCreator.IsCreating)
+        {
+            barCreator.CancelCurrentBarCreation();
+        }
+
         if (gameManager == null)
         {
             Debug.LogError("UIManager: GameManager no asignado en el inspector.");
@@ -97,6 +150,13 @@ public class UIManager : MonoBehaviour
     {
         AudioController.instance.ButtonPressed();
         if (barCreator == null) return;
+
+        // Cancelar cualquier construcción en curso al cambiar de tipo
+        if (barCreator.IsCreating)
+        {
+            barCreator.CancelCurrentBarCreation();
+        }
+
         if (myBarType ==0)
         {
             if (WoodButton != null) WoodButton.GetComponent<Outline>().enabled = false;
@@ -122,5 +182,17 @@ public class UIManager : MonoBehaviour
         {
             SceneManager.LoadScene(backScene);
         }
+    }
+
+    // Abre el panel de tutorial (asignar este método al botón Tutorial)
+    public void Tutorial()
+    {
+        if (tutorialPanel == null)
+        {
+            Debug.LogWarning("UIManager: tutorialPanel no asignado.");
+            return;
+        }
+        AudioController.instance.ButtonPressed();
+        tutorialPanel.Open();
     }
 }

@@ -64,6 +64,7 @@ public class car : MonoBehaviour
     public void StopAutoDrive()
     {
         AudioController.instance.CarStopMovementSfx();
+
         autoDrive = false;
         moveInput = Vector2.zero;
     }
