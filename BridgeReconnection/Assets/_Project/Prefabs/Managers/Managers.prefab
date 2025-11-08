@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinManager
   coinTextTMP: {fileID: 0}
-  prefix: 'Coins: '
+  prefix: 'Monedas:'
 --- !u!1 &6108080158877032076
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   carController: {fileID: 0}
   CreationOptionsUI: {fileID: 0}
   levelBudget: 2500
+  nextLevelName: 
 --- !u!1 &6564363415544072790
 GameObject:
   m_ObjectHideFlags: 0
