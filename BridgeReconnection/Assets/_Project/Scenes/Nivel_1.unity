@@ -1575,6 +1575,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &828790231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409574065927571552, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 4914349866811625182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1640,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3421116056870865981, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
   m_PrefabInstance: {fileID: 4914349866811625182}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &884655189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6249354401956030435, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 4914349866811625182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884655187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &920066583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,6 +3545,17 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!114 &2104848910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6525859062953760837, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 4914349866811625182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &252987936596948574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3819,7 +3852,7 @@ PrefabInstance:
     - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: messageTMP
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 828790231}
     - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: ControllerUI
       value: 
@@ -3849,6 +3882,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 659449385}
     - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: successMessage
+      value: 'MONEDAS RECOLECTADAS: {0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: incompletePanel
+      value: 
+      objectReference: {fileID: 1244644392}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: nextLevelButton
       value: 
       objectReference: {fileID: 599277996}
@@ -3856,6 +3897,14 @@ PrefabInstance:
       propertyPath: CreationButtonsUI
       value: 
       objectReference: {fileID: 354275153}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: completeMessageTMP
+      value: 
+      objectReference: {fileID: 4914349866811625183}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: missingCoinsMessage
+      value: 'MONEDAS FALTANTES: {0}'
+      objectReference: {fileID: 0}
     - target: {fileID: 3522053092076970117, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: m_Name
       value: FinishZone
@@ -4056,6 +4105,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 515010620428851718, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -140.92264
+      objectReference: {fileID: 0}
+    - target: {fileID: 515010620428851718, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -224.96083
+      objectReference: {fileID: 0}
     - target: {fileID: 1608379788809746572, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -478.97632
@@ -4092,10 +4149,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 8.499847
       objectReference: {fileID: 0}
+    - target: {fileID: 5709710117276417142, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6232551243228022451, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -300
+      value: -300.00003
       objectReference: {fileID: 0}
+    - target: {fileID: 6926732868547048981, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1065073623, guid: f2bbc155df282004c9f64593078cb96f, type: 3}
     - target: {fileID: 7240248493867782303, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4201,10 +4266,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1048355696}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1711480030647784121, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+--- !u!114 &4914349866811625183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3915527331616460420, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 4914349866811625182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &4973964411761997299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4280,7 +4357,7 @@ PrefabInstance:
     - target: {fileID: 8446847021168600942, guid: 3c0c2961d7cd3214bb3de193f53b87ef, type: 3}
       propertyPath: restartButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2104848910}
     - target: {fileID: 8446847021168600942, guid: 3c0c2961d7cd3214bb3de193f53b87ef, type: 3}
       propertyPath: IncompletePanel
       value: 
@@ -4309,7 +4386,7 @@ PrefabInstance:
     - target: {fileID: 2538612522728502229, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
       propertyPath: coinTextTMP
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 884655189}
     - target: {fileID: 5368231526308204823, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.98267
@@ -4362,6 +4439,10 @@ PrefabInstance:
       propertyPath: gridImage
       value: 
       objectReference: {fileID: 1257392134}
+    - target: {fileID: 7472381371425277760, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
+      propertyPath: levelName
+      value: Nivel_1
+      objectReference: {fileID: 0}
     - target: {fileID: 7472381371425277760, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
       propertyPath: RoadButton
       value: 

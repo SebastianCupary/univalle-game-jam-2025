@@ -74,6 +74,7 @@ public class LevelsSelector : MonoBehaviour
 
     private void OnLevelClicked(int index)
     {
+        AudioController.instance.ButtonPressed();
         Select(index);
     }
 
@@ -118,6 +119,7 @@ public class LevelsSelector : MonoBehaviour
             return;
         }
 
+        AudioController.instance.ButtonPressed();
         SceneManager.LoadScene(sceneName);
     }
 }

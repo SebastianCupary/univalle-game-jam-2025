@@ -71,10 +71,12 @@ MonoBehaviour:
   forceTrigger: 1
   completePanel: {fileID: 0}
   messageTMP: {fileID: 0}
-  successMessage: Nivel completado
-  missingCoinsMessage: 'Nivel Incompleto Faltan monedas: {0}'
+  successMessage: 
+  missingCoinsMessage: 'MONEDAS: {0}'
   CoinCounterUI: {fileID: 0}
   CreationButtonsUI: {fileID: 0}
   restartButton: {fileID: 0}
   nextLevelButton: {fileID: 0}
+  levelsButton: {fileID: 0}
   nextLevelName: Nivel_3
+  levelMenu: Niveles

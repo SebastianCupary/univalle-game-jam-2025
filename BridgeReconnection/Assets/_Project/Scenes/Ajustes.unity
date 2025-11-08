@@ -277,7 +277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22185161}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1784289106}
+        m_TargetAssemblyTypeName: AudioSettingsUI, Assembly-CSharp
+        m_MethodName: GoBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &22185161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,13 +1471,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1932230441}
   m_HandleRect: {fileID: 775747374}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1784289106}
+        m_TargetAssemblyTypeName: AudioSettingsUI, Assembly-CSharp
+        m_MethodName: ControlMusic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &831638098
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,13 +2140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f0fe3c603e28347a0657a57642fc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioSettingsUI
-  mixer: {fileID: 0}
-  musicSlider: {fileID: 806488714}
-  musicMuteToggle: {fileID: 0}
-  sfxSlider: {fileID: 1888801182}
-  sfxMuteToggle: {fileID: 0}
-  backButton: {fileID: 22185160}
-  backScene: Niveles
+  audioMixer: {fileID: 24100000, guid: f458d8bef57f8cb4688d147c0b474434, type: 2}
+  musicParam: Master
+  soundParam: Sound
 --- !u!1 &1837932610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,13 +2398,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 831638099}
   m_HandleRect: {fileID: 409530782}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1784289106}
+        m_TargetAssemblyTypeName: AudioSettingsUI, Assembly-CSharp
+        m_MethodName: ControlSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1932230440
 GameObject:
   m_ObjectHideFlags: 0

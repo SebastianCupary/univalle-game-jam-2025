@@ -20,6 +20,7 @@ public class coins : MonoBehaviour
 
         if (CoinManager.Instance != null)
         {
+            AudioController.instance.CoinSfx();
             CoinManager.Instance.Add(amount);
         }
 

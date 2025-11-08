@@ -24,6 +24,7 @@ public class SceneSwitcher : MonoBehaviour
 
     private void LoadScene(string sceneName)
     {
+        AudioController.instance.ButtonPressed();
         if (string.IsNullOrEmpty(sceneName))
         {
             Debug.LogWarning("SceneSwitcher: Nombre de escena vacío.");
@@ -34,7 +35,8 @@ public class SceneSwitcher : MonoBehaviour
 
     private void QuitGame()
     {
-        #if UNITY_EDITOR
+        AudioController.instance.ButtonPressed();
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // Detiene modo Play en Editor
         #else
         Application.Quit();

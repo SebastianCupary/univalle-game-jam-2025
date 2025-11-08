@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e00d636876f60554ebbefa3e02c5d78a
+guid: 80244ba0a4f9226489c5f2f41297d032
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Reiniciar_0
+      name: avanzar_0
       rect:
         serializedVersion: 2
-        x: 59
+        x: 64
         y: 0
-        width: 896
-        height: 1024
+        width: 928
+        height: 992
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5c74d873ee75e84098e50cf8ab5e64f
-      internalID: -907909611
+      spriteID: ce9aa5241a342a4469fc71166aaeea27
+      internalID: 1117459397
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 34571696e8096014f851806b1c3b3792
+    spriteID: 7da6bb7a0292bd041bbd75dbdcf9f790
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Reiniciar_0: -907909611
+      avanzar_0: 1117459397
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

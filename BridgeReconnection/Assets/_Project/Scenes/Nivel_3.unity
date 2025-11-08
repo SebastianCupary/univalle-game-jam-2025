@@ -325,7 +325,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &24504887 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 954654717943065566, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6409574065927571552, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
   m_PrefabInstance: {fileID: 24504883}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2822,9 +2822,11 @@ MonoBehaviour:
   stopCarOnEnter: 1
   forceTrigger: 1
   completePanel: {fileID: 24504891}
+  incompletePanel: {fileID: 24504886}
+  completeMessageTMP: {fileID: 1555687311}
   messageTMP: {fileID: 24504887}
-  successMessage: Nivel completado
-  missingCoinsMessage: 'Nivel Incompleto Faltan monedas: {0}'
+  successMessage: 'MONEDAS RECOLECTADAS: {0}'
+  missingCoinsMessage: 'MONEDAS FALTANTES: {0}'
   CoinCounterUI: {fileID: 24504893}
   CreationButtonsUI: {fileID: 24504895}
   restartButton: {fileID: 24504889}
@@ -3182,6 +3184,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540269201}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1555687311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3915527331616460420, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 24504883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1820366323
 GameObject:
   m_ObjectHideFlags: 0

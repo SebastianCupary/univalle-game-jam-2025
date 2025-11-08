@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e749b74db7a36b04ca613637625e5c9c
+guid: 354dd27606da881428afbfb44ec21947
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,19 +93,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,20 +100,20 @@ TextureImporter:
       name: Volver_0
       rect:
         serializedVersion: 2
-        x: 56
+        x: 60
         y: 0
-        width: 922
-        height: 990
+        width: 928
+        height: 992
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41a3170ba9764e24bad74e6e29445e52
-      internalID: 1213859547
+      spriteID: c850748ce11972143b3bde3d828a714b
+      internalID: -1953162435
       vertices: []
       indices: 
       edges: []
@@ -135,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f310bb2181af5c34ba5ad4815b527476
+    spriteID: e4c78e2bd348bdb4287b1feea4c900c1
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Volver_0: 1213859547
+      Volver_0: -1953162435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -215,6 +215,7 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     // Usa el prefab actualmente seleccionado para decidir qué material deshacer.
     public void UndoLastBarOfCurrentKind()
     {
+        AudioController.instance.ButtonPressed();
         var prefab = barToInstantiate;
         Bar.BarKind kind = Bar.BarKind.Road;
         if (prefab != null)

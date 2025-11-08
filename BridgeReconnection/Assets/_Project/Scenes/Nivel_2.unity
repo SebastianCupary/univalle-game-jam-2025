@@ -808,6 +808,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+--- !u!114 &322100554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409574065927571552, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 322100553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &322100555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3915527331616460420, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 322100553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3934,6 +3956,10 @@ PrefabInstance:
       value: Niveles
       objectReference: {fileID: 0}
     - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: messageTMP
+      value: 
+      objectReference: {fileID: 322100554}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: levelsButton
       value: 
       objectReference: {fileID: 1537625956}
@@ -3954,6 +3980,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1878266109}
     - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: successMessage
+      value: 'MONEDAS RECOLECTADAS: {0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: incompletePanel
+      value: 
+      objectReference: {fileID: 1331154770}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: nextLevelButton
       value: 
       objectReference: {fileID: 1149768640}
@@ -3961,6 +3995,14 @@ PrefabInstance:
       propertyPath: CreationButtonsUI
       value: 
       objectReference: {fileID: 880811151}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: completeMessageTMP
+      value: 
+      objectReference: {fileID: 322100555}
+    - target: {fileID: 3445430647846038353, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
+      propertyPath: missingCoinsMessage
+      value: 'MONEDAS FALTANTES: {0}'
+      objectReference: {fileID: 0}
     - target: {fileID: 3522053092076970117, guid: 5d2f1bdff7b0b6740a88ef357e6ea3aa, type: 3}
       propertyPath: m_Name
       value: FinishZone

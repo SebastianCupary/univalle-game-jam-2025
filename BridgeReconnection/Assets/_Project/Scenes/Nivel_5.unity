@@ -2646,17 +2646,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5709710117276417142, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
   m_PrefabInstance: {fileID: 683061417}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &997375742 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 954654717943065566, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
-  m_PrefabInstance: {fileID: 683061417}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &997375743 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4758660982558370550, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
@@ -3299,9 +3288,11 @@ MonoBehaviour:
   stopCarOnEnter: 1
   forceTrigger: 1
   completePanel: {fileID: 997375746}
-  messageTMP: {fileID: 997375742}
-  successMessage: Nivel completado
-  missingCoinsMessage: 'Nivel Incompleto Faltan monedas: {0}'
+  incompletePanel: {fileID: 997375741}
+  completeMessageTMP: {fileID: 1843802341}
+  messageTMP: {fileID: 1843802340}
+  successMessage: 'MONEDAS RECOLECTADAS: {0}'
+  missingCoinsMessage: 'MONEDAS FALTANTES: {0}'
   CoinCounterUI: {fileID: 997375748}
   CreationButtonsUI: {fileID: 997375749}
   restartButton: {fileID: 997375744}
@@ -5219,6 +5210,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8829013171543258419, guid: e39d41907b33eeb45ac65f92867ec6c1, type: 3}
   m_PrefabInstance: {fileID: 1832700291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843802340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409574065927571552, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 683061417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1843802341 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3915527331616460420, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+  m_PrefabInstance: {fileID: 683061417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1846504895
 PrefabInstance:
   m_ObjectHideFlags: 0

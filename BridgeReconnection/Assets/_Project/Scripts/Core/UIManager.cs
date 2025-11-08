@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [Header("Force Measurement Settings")]
     public float measurementDuration =3.0f; // segundos de muestreo
     [Range(0.1f,1f)] public float measurementFactor =0.75f; // factor recomendado
-    public bool applyBreakForceAfterMeasure = false; // si true, aplica automáticamente lo recomendado
+    public bool applyBreakForceAfterMeasure = false; // si true, aplica automáticamente lo reco         endado
     public bool applyOnlyToRoad = true; // aplica solo a barras tipo Road
     public string levelName = "Nivel_1";
 
@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        AudioController.instance.ButtonPressed();
         if (gameManager == null)
         {
             Debug.LogError("UIManager: GameManager no asignado en el inspector.");
@@ -88,10 +89,12 @@ public class UIManager : MonoBehaviour
 
     public void Restart()
     {
+        AudioController.instance.ButtonPressed();
         SceneManager.LoadScene(levelName);
     }
     public void ChangeBar(int myBarType)
     {
+        AudioController.instance.ButtonPressed();
         if (barCreator == null) return;
         if (myBarType ==0)
         {
@@ -109,6 +112,7 @@ public class UIManager : MonoBehaviour
 
     public void GoBack()
     {
+        AudioController.instance.ButtonPressed();
         if (!string.IsNullOrEmpty(backScene))
         {
             SceneManager.LoadScene(backScene);
