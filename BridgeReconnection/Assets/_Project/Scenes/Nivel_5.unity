@@ -1757,6 +1757,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeBar
       objectReference: {fileID: 0}
+    - target: {fileID: 5237310780368118906, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1048355696}
+    - target: {fileID: 5237310780368118906, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237310780368118906, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5269383831631173682, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -478.97626
@@ -2991,7 +3003,7 @@ MonoBehaviour:
   carController: {fileID: 2015735192}
   CreationOptionsUI: {fileID: 683061421}
   levelBudget: 2000
-  nextLevelName: Niveles
+  backScene: Niveles
 --- !u!1001 &1054084248
 PrefabInstance:
   m_ObjectHideFlags: 0

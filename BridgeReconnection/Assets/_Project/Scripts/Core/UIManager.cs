@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     [Header("Budget per Level")]
     public int levelBudget =1000; // Configurable por nivel en el inspector
 
-    public string nextLevelName;
+    public string backScene = "Niveles";
     public void Start()
     {
         // Inicializa presupuesto del nivel (si existe BudgetManager en escena)
@@ -107,9 +107,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void LoadNextLevel()
+    public void GoBack()
     {
-        if (string.IsNullOrEmpty(nextLevelName)) return;
-        SceneManager.LoadScene(nextLevelName);
+        if (!string.IsNullOrEmpty(backScene))
+        {
+            SceneManager.LoadScene(backScene);
+        }
     }
 }

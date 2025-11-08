@@ -2126,17 +2126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1291263682 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4251583075399805882, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
-  m_PrefabInstance: {fileID: 4914349866811625182}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!4 &1390777443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6444993155712920091, guid: 64c326f65847e8d4cabc14ca810e46af, type: 3}
@@ -4059,6 +4048,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 20955561598975792, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_Name
+      value: Button Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 246855874612059361, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -4071,10 +4064,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -478.97632
       objectReference: {fileID: 0}
+    - target: {fileID: 3171513401072826404, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 5130200881819032949, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1048355696}
+    - target: {fileID: 5237310780368118906, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1048355696}
+    - target: {fileID: 5237310780368118906, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237310780368118906, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5269383831631173682, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -478.97632
@@ -4085,7 +4094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6232551243228022451, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -300.00003
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 7240248493867782303, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_Camera
@@ -4271,7 +4280,7 @@ PrefabInstance:
     - target: {fileID: 8446847021168600942, guid: 3c0c2961d7cd3214bb3de193f53b87ef, type: 3}
       propertyPath: restartButton
       value: 
-      objectReference: {fileID: 1291263682}
+      objectReference: {fileID: 0}
     - target: {fileID: 8446847021168600942, guid: 3c0c2961d7cd3214bb3de193f53b87ef, type: 3}
       propertyPath: IncompletePanel
       value: 
