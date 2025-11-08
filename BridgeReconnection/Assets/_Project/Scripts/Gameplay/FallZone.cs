@@ -19,6 +19,8 @@ public class FallZone : MonoBehaviour
 
     public string levelMenu = "Niveles";
 
+    public TMPro.TMP_Text messageTMP;
+
     private void Reset()
  {
  var col = GetComponent<Collider>();
@@ -65,17 +67,25 @@ public class FallZone : MonoBehaviour
         // Mostrar UI de nivel incompleto
         if (CreationUI) CreationUI.SetActive(false);
         if (incompletePanel) incompletePanel.SetActive(true);
- }
+        //Ocultar Mensaje
+        messageTMP.text = "";
+        AudioController.instance.DeathSound();
+    }
 
 
     public void LoadLevelsMenu()
     {
+        AudioController.instance.ButtonPressed();
+        AudioController.instance.ButtonPressed();
+        AudioController.instance.StopLevelMusic();
+        AudioController.instance.BackgroundMenuMusic();
         if (string.IsNullOrEmpty(levelMenu)) return;
         SceneManager.LoadScene(levelMenu);
     }
 
     public void RestartLevel()
     {
+        AudioController.instance.ButtonPressed();
         var scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

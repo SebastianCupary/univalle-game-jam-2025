@@ -1,16 +1,21 @@
 using UnityEngine;
 
-
-
 public class AudioController : MonoBehaviour
 {
-    public AudioSource backgroundMusicSource;
-    public AudioSource sfxSource;
+    [Header("Music")]
+    public AudioSource backgroundMenuMusic;
+    public AudioSource backgroundLevelMusic;
 
-    public AudioClip effectButtonClick;
-    public AudioClip effectCoinCollect;
-    public AudioSource carMovement;
+    [Header("SFX")]
+    public AudioSource buttonClickSfx;
+    public AudioSource coinCollectSfx;
+    public AudioSource deathSfx;
+    public AudioSource winSfx;
+    public AudioSource barCreatorSfx;
+    public AudioSource carMovementLoop;
+
     public static AudioController instance;
+
     private void Awake()
     {
         if (instance == null)
@@ -23,68 +28,54 @@ public class AudioController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        backgroundMusicSource.Play();
-        backgroundMusicSource.loop = true;
 
+    private void Start()
+    {
+        PlayLoop(backgroundMenuMusic); // música inicial (menú)
     }
 
-    public void ButtonPressed()
+    // Helpers -----------------------------------------------------------------
+    private void Play(AudioSource src)
     {
-        sfxSource.clip = effectButtonClick;
-        sfxSource.Play();
+        if (src == null) return;
+        src.loop = false;
+        src.Play();
     }
 
-    public void ToggleMusic(bool isOn)
+    private void PlayLoop(AudioSource src)
     {
-        if (isOn)
-        {
-            backgroundMusicSource.UnPause();
-        }
-        else
-        {
-            backgroundMusicSource.Pause();
-        }
+        if (src == null) return;
+        src.loop = true;
+        if (!src.isPlaying) src.Play();
     }
 
-    public void ToggleSFX(bool isOn)
+    private void Stop(AudioSource src)
     {
-        if (isOn)
-        {
-            sfxSource.UnPause();
-        }
-        else
-        {
-            sfxSource.Pause();
-        }
+        if (src == null) return;
+        src.Stop();
     }
 
-    public void SetMusicVolume(float volume)
+    private void Pause(AudioSource src)
     {
-        backgroundMusicSource.volume = volume;
+        if (src == null) return;
+        src.Pause();
     }
 
-    public void SetSFXVolume(float volume)
-    {
-        sfxSource.volume = volume;
-    }
+    // UI / Gameplay SFX --------------------------------------------------------
+    public void ButtonPressed() => Play(buttonClickSfx);
+    public void CoinSfx() => Play(coinCollectSfx);
+    public void DeathSound() => Play(deathSfx);
+    public void WinSound() => Play(winSfx);
+    public void BarCreatorSound() => Play(barCreatorSfx);
 
-    public void CoinSfx()
-    {
-        // Aquí puedes agregar el código para reproducir el sonido de moneda
-        sfxSource.clip = effectCoinCollect;
-        sfxSource.Play();
-    }
-    public void CarMovementSfx()
-    {
-        carMovement.Play();
+    // Car movement -------------------------------------------------------------
+    public void CarMovementSfx() => PlayLoop(carMovementLoop);
+    public void CarStopMovementSfx() => Pause(carMovementLoop);
 
-    }
-    public void CarStopMovementSfx()
-    {
-        carMovement.Pause();
-    }
+    // Music control ------------------------------------------------------------
+    public void BackgroundMenuMusic() => PlayLoop(backgroundMenuMusic);
+    public void StopMenuMusic() => Stop(backgroundMenuMusic);
 
+    public void BackgroundLevelMusic() => PlayLoop(backgroundLevelMusic);
+    public void StopLevelMusic() => Stop(backgroundLevelMusic);
 }

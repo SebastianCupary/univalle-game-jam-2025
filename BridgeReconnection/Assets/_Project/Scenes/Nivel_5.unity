@@ -2047,7 +2047,7 @@ Transform:
   m_GameObject: {fileID: 702076787}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5.78, y: 3.16, z: 0}
+  m_LocalPosition: {x: -5.78, y: 3.16, z: -3.04}
   m_LocalScale: {x: 0.47851, y: 0.07072378, z: 0.47851}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2087,9 +2087,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 28.4658
+  m_Height: 108.32132
   m_Direction: 1
-  m_Center: {x: 0.00000006228151, y: -0.16685712, z: -0.00000009342226}
+  m_Center: {x: 0.00000006228151, y: 39.760887, z: -0.00000009342222}
 --- !u!23 &702076791
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2745,6 +2745,7 @@ MonoBehaviour:
   restartButton: {fileID: 997375739}
   levelsButton: {fileID: 997375740}
   levelMenu: Niveles
+  messageTMP: {fileID: 1843802340}
 --- !u!65 &1014624319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4529,7 +4530,7 @@ Transform:
   m_GameObject: {fileID: 1577265563}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.39, y: 3.9, z: 0}
+  m_LocalPosition: {x: -1.39, y: 3.9, z: -3.04}
   m_LocalScale: {x: 0.47851, y: 0.07072378, z: 0.47851}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4569,9 +4570,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 28.4658
+  m_Height: 91.88458
   m_Direction: 1
-  m_Center: {x: 0.00000006228151, y: -0.16685712, z: -0.00000009342226}
+  m_Center: {x: 0.00000006228151, y: 31.542488, z: -0.00000009342224}
 --- !u!23 &1577265567
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6462,7 +6463,7 @@ Transform:
   m_GameObject: {fileID: 2117497976}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.37, y: 3.06, z: 0}
+  m_LocalPosition: {x: 2.37, y: 3.06, z: -3.04}
   m_LocalScale: {x: 0.47851, y: 0.07072378, z: 0.47851}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6502,9 +6503,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 28.4658
+  m_Height: 101.91494
   m_Direction: 1
-  m_Center: {x: 0.00000006228151, y: -0.16685712, z: -0.00000009342226}
+  m_Center: {x: 0.00000006228151, y: 36.557667, z: -0.00000009342223}
 --- !u!23 &2117497980
 MeshRenderer:
   m_ObjectHideFlags: 0

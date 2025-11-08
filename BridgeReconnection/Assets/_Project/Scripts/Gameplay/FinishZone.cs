@@ -91,13 +91,15 @@ public class FinishZone : MonoBehaviour
  if (completePanel) completePanel.SetActive(true);
  // Mostrar mensaje solo en panel de completo
  if (completeMessageTMP) completeMessageTMP.text = text;
- }
+ AudioController.instance.WinSound();
+        }
  else
  {
  if (completePanel) completePanel.SetActive(false);
  if (incompletePanel) incompletePanel.SetActive(true);
  // No mostrar mensaje de éxito en panel incompleto
  if (completeMessageTMP) completeMessageTMP.text = string.Empty;
+AudioController.instance.DeathSound();
  }
 
  // Botones
@@ -123,6 +125,8 @@ public class FinishZone : MonoBehaviour
  public void LoadLevelsMenu()
  {
  AudioController.instance.ButtonPressed();
+ AudioController.instance.StopLevelMusic();
+ AudioController.instance.BackgroundMenuMusic();
  if (string.IsNullOrEmpty(levelMenu)) return;
  SceneManager.LoadScene(levelMenu);
  }

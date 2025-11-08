@@ -120,6 +120,9 @@ public class LevelsSelector : MonoBehaviour
         }
 
         AudioController.instance.ButtonPressed();
+        AudioController.instance.StopMenuMusic();
+        AudioController.instance.BackgroundLevelMusic();
+
         SceneManager.LoadScene(sceneName);
     }
 }

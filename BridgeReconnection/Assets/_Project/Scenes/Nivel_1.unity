@@ -3344,7 +3344,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015735188}
   serializedVersion: 5
-  m_Mass: 10
+  m_Mass: 25
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3788,6 +3788,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106621842751681387, guid: c49eb50da4f525548a4f8c3ec6bb6d81, type: 3}
+      propertyPath: m_Height
+      value: 55.103725
+      objectReference: {fileID: 0}
+    - target: {fileID: 106621842751681387, guid: c49eb50da4f525548a4f8c3ec6bb6d81, type: 3}
+      propertyPath: m_Center.y
+      value: 13.152099
+      objectReference: {fileID: 0}
+    - target: {fileID: 106621842751681387, guid: c49eb50da4f525548a4f8c3ec6bb6d81, type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000009342226
+      objectReference: {fileID: 0}
+    - target: {fileID: 5278170907128353686, guid: c49eb50da4f525548a4f8c3ec6bb6d81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.54
+      objectReference: {fileID: 0}
     - target: {fileID: 6278937325340650604, guid: c49eb50da4f525548a4f8c3ec6bb6d81, type: 3}
       propertyPath: m_Name
       value: Coins
@@ -4113,6 +4129,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -224.96083
       objectReference: {fileID: 0}
+    - target: {fileID: 1032347659567169107, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -402.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1608379788809746572, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -478.97632
@@ -4151,7 +4171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709710117276417142, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6232551243228022451, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4160,7 +4180,11 @@ PrefabInstance:
     - target: {fileID: 6926732868547048981, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1065073623, guid: f2bbc155df282004c9f64593078cb96f, type: 3}
+      objectReference: {fileID: -1416747681, guid: 6da40f7afaaaccb4d847460d9730d586, type: 3}
+    - target: {fileID: 6926732868547048981, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7240248493867782303, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4341,7 +4365,7 @@ PrefabInstance:
     - target: {fileID: 8446847021168600942, guid: 3c0c2961d7cd3214bb3de193f53b87ef, type: 3}
       propertyPath: messageTMP
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 828790231}
     - target: {fileID: 8446847021168600942, guid: 3c0c2961d7cd3214bb3de193f53b87ef, type: 3}
       propertyPath: ControllerUI
       value: 

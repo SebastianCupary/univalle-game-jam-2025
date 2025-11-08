@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [Header("Force Measurement Settings")]
     public float measurementDuration =3.0f; // segundos de muestreo
     [Range(0.1f,1f)] public float measurementFactor =0.75f; // factor recomendado
-    public bool applyBreakForceAfterMeasure = false; // si true, aplica automáticamente lo reco         endado
+    public bool applyBreakForceAfterMeasure = false; // si true, aplica automáticamente lo recomendado
     public bool applyOnlyToRoad = true; // aplica solo a barras tipo Road
     public string levelName = "Nivel_1";
 
@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         AudioController.instance.ButtonPressed();
+        AudioController.instance.CarStopMovementSfx();
         SceneManager.LoadScene(levelName);
     }
     public void ChangeBar(int myBarType)
@@ -112,7 +113,11 @@ public class UIManager : MonoBehaviour
 
     public void GoBack()
     {
+
         AudioController.instance.ButtonPressed();
+        AudioController.instance.ButtonPressed();
+        AudioController.instance.StopLevelMusic();
+        AudioController.instance.BackgroundMenuMusic();
         if (!string.IsNullOrEmpty(backScene))
         {
             SceneManager.LoadScene(backScene);
