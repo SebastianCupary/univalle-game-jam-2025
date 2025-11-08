@@ -4135,6 +4135,10 @@ PrefabInstance:
       propertyPath: budgetTextTMP
       value: 
       objectReference: {fileID: 273195399}
+    - target: {fileID: 5889240393699453636, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
+      propertyPath: startingBudget
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 6564363415544072790, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -4155,6 +4159,10 @@ PrefabInstance:
       propertyPath: barCreator
       value: 
       objectReference: {fileID: 496910748}
+    - target: {fileID: 7472381371425277760, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
+      propertyPath: levelBudget
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 7472381371425277760, guid: 2ef45139feadba14a9b5629fbc77ef07, type: 3}
       propertyPath: carController
       value: 

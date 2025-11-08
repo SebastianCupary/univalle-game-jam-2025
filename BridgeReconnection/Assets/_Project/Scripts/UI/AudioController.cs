@@ -61,6 +61,14 @@ public class AudioController : MonoBehaviour
         src.Pause();
     }
 
+    private void StopAndRewind(AudioSource src)
+    {
+        if (src == null) return;
+        src.Stop();
+        // asegurar que la próxima reproducción inicie desde el comienzo
+        src.time = 0f;
+    }
+
     // UI / Gameplay SFX --------------------------------------------------------
     public void ButtonPressed() => Play(buttonClickSfx);
     public void CoinSfx() => Play(coinCollectSfx);
@@ -70,7 +78,7 @@ public class AudioController : MonoBehaviour
 
     // Car movement -------------------------------------------------------------
     public void CarMovementSfx() => PlayLoop(carMovementLoop);
-    public void CarStopMovementSfx() => Pause(carMovementLoop);
+    public void CarStopMovementSfx() => StopAndRewind(carMovementLoop);
 
     // Music control ------------------------------------------------------------
     public void BackgroundMenuMusic() => PlayLoop(backgroundMenuMusic);

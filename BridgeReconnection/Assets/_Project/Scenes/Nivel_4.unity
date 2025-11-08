@@ -745,7 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BudgetManager
   budgetTextTMP: {fileID: 2078432778}
   prefix: 'Presupuesto: '
-  startingBudget: 2000
+  startingBudget: 2100
 --- !u!4 &197617289
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,7 +1164,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197674674}
   serializedVersion: 5
-  m_Mass: 35
+  m_Mass: 30
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   gridImage: {fileID: 2078432782}
   carController: {fileID: 197674675}
   CreationOptionsUI: {fileID: 2078432781}
-  levelBudget: 2000
+  levelBudget: 2100
   backScene: Niveles
 --- !u!4 &1456108633
 Transform:

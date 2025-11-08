@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BudgetManager
   budgetTextTMP: {fileID: 24504892}
   prefix: 'Presupuesto: '
-  startingBudget: 3000
+  startingBudget: 2000
 --- !u!1 &682587721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2511,7 @@ MonoBehaviour:
   gridImage: {fileID: 24504901}
   carController: {fileID: 2015735192}
   CreationOptionsUI: {fileID: 24504899}
-  levelBudget: 3000
+  levelBudget: 2000
   backScene: Niveles
 --- !u!1 &1189555523
 GameObject:

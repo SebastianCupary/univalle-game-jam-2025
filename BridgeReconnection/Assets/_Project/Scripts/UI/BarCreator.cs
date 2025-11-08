@@ -42,6 +42,7 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
                     return;
                 }
                 BarCreationStarted = true;
+                AudioController.instance.BarCreatorSound();
                 StartBarCreation(gridPosition);
             }
             // Si no se encuentra un punto en esa posición, no hace nada.
@@ -51,10 +52,12 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
             // La lógica para finalizar o cancelar la creación sigue igual.
             if (eventData.button == PointerEventData.InputButton.Left)
             {
+                AudioController.instance.BarCreatorSound();
                 FinishBarCreation();
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
+                AudioController.instance.BarCreatorSound();
                 DeleteCurrentBar();
             }
         }
