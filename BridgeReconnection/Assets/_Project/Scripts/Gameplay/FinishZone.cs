@@ -12,43 +12,52 @@ public class FinishZone : MonoBehaviour
 
  [Header("UI")] public GameObject completePanel; // Panel opcional
  public TMP_Text messageTMP; // TMP
- public string successMessage = "Nivel completado";
+ public string successMessage = "";
  public string missingCoinsMessage = "Nivel Incompleto Monedas Faltantes: {0}";
 
  [Header("UI Elements to Hide on Finish")] 
- public GameObject ControllerUI; // botones de control
+ public GameObject CoinCounterUI; // contador de monedas
+ public GameObject CreationButtonsUI; // botones de creación
 
  [Header("Finish Buttons")] 
  public Button restartButton; 
  public Button nextLevelButton; 
- public string nextLevelName; // si está vacío, no se mostrará el botón de siguiente nivel
+    public Button levelsButton;
+    public string nextLevelName; 
+    public string levelMenu = "Niveles";
 
- private void Reset()
+    private void Reset()
  {
  var col = GetComponent<Collider>();
  if (col) col.isTrigger = true;
  }
 
- private void Awake()
- {
- if (forceTrigger)
- {
- var col = GetComponent<Collider>();
- if (col) col.isTrigger = true;
- }
+    private void Awake()
+    {
+        if (forceTrigger)
+        {
+            var col = GetComponent<Collider>();
+            if (col) col.isTrigger = true;
+        }
 
- // Registrar callbacks si hay botones asignados
- if (restartButton != null)
- {
- restartButton.onClick.RemoveAllListeners();
- restartButton.onClick.AddListener(RestartLevel);
- }
- if (nextLevelButton != null)
- {
- nextLevelButton.onClick.RemoveAllListeners();
- nextLevelButton.onClick.AddListener(LoadNextLevel);
- }
- }
+        // Registrar callbacks si hay botones asignados
+        if (restartButton != null)
+        {
+            restartButton.onClick.RemoveAllListeners();
+            restartButton.onClick.AddListener(RestartLevel);
+        }
+        if (nextLevelButton != null)
+        {
+            nextLevelButton.onClick.RemoveAllListeners();
+            nextLevelButton.onClick.AddListener(LoadNextLevel);
+        }
+
+        if (levelsButton != null)
+        {
+            levelsButton.onClick.RemoveAllListeners();
+            levelsButton.onClick.AddListener(LoadLevelsMenu);
+        }
+    }
 
  private void OnTriggerEnter(Collider other)
  {
@@ -66,8 +75,8 @@ public class FinishZone : MonoBehaviour
 
  private void ShowFinishUI(bool success, string text)
  {
-
- if (ControllerUI) ControllerUI.SetActive(false);
+ if (CoinCounterUI) CoinCounterUI.SetActive(false);
+ if (CreationButtonsUI) CreationButtonsUI.SetActive(false);
 
  if (messageTMP) messageTMP.text = text;
  if (completePanel) completePanel.SetActive(true);
@@ -90,4 +99,10 @@ public class FinishZone : MonoBehaviour
  if (string.IsNullOrEmpty(nextLevelName)) return;
  SceneManager.LoadScene(nextLevelName);
  }
+
+    public void LoadLevelsMenu()
+    {
+        if (string.IsNullOrEmpty(levelMenu)) return;
+        SceneManager.LoadScene(levelMenu);
+    }
 }

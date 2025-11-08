@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinManager
   coinTextTMP: {fileID: 0}
-  prefix: 'Monedas: '
+  prefix: 'Coins: '
 --- !u!1 &6108080158877032076
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,12 +138,12 @@ MonoBehaviour:
   WoodButton: {fileID: 0}
   barCreator: {fileID: 0}
   gameManager: {fileID: 3991971404524072551}
-  budgetManager: {fileID: 0}
+  budgetManager: {fileID: 5889240393699453636}
   measurementDuration: 3
   measurementFactor: 0.75
   applyBreakForceAfterMeasure: 0
   applyOnlyToRoad: 1
-  levelName: Nivel_1
+  levelName: Nivel_2
   gridImage: {fileID: 0}
   carController: {fileID: 0}
   CreationOptionsUI: {fileID: 0}

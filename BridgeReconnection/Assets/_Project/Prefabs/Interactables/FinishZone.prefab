@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3522053092076970117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 12.41, y: 5.8421316, z: -0.021540642}
+  m_LocalPosition: {x: 14.07, y: 8.99, z: -0.021540642}
   m_LocalScale: {x: 1.4640362, y: 1.4754674, z: 1.5181267}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66,14 +66,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970dc0591bca50e48aa1a80a61e8b27c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishZone
-  requiredCoins: 1
+  requiredCoins: 2
   stopCarOnEnter: 1
   forceTrigger: 1
   completePanel: {fileID: 0}
   messageTMP: {fileID: 0}
   successMessage: Nivel completado
   missingCoinsMessage: 'Nivel Incompleto Faltan monedas: {0}'
-  ControllerUI: {fileID: 0}
+  CoinCounterUI: {fileID: 0}
+  CreationButtonsUI: {fileID: 0}
   restartButton: {fileID: 0}
   nextLevelButton: {fileID: 0}
-  nextLevelName: Nivel_2
+  nextLevelName: Nivel_3

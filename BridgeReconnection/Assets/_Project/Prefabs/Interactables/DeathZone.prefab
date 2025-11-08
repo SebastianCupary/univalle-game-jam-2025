@@ -66,8 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25f013ba8172ef4495d53aa13bdec80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FallZone
+  completePanel: {fileID: 0}
   messageTMP: {fileID: 0}
   fallMessage: 'Nivel incompleto: te caiste'
-  completePanel: {fileID: 0}
-  IncompletePanel: {fileID: 0}
-  ControllerUI: {fileID: 0}
+  CoinCounterUI: {fileID: 0}
+  CreationButtonsUI: {fileID: 0}
+  restartButton: {fileID: 0}
+  nextLevelButton: {fileID: 0}

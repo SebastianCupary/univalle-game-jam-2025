@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     [Header("Budget per Level")]
     public int levelBudget =1000; // Configurable por nivel en el inspector
 
+    public string nextLevelName;
     public void Start()
     {
         // Inicializa presupuesto del nivel (si existe BudgetManager en escena)
@@ -104,5 +105,11 @@ public class UIManager : MonoBehaviour
             if (WoodButton != null) WoodButton.GetComponent<Outline>().enabled = true;
             barCreator.barToInstantiate = barCreator.WoodBar;
         }
+    }
+
+    public void LoadNextLevel()
+    {
+        if (string.IsNullOrEmpty(nextLevelName)) return;
+        SceneManager.LoadScene(nextLevelName);
     }
 }
