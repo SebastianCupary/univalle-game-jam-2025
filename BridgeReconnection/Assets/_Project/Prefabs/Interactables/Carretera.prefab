@@ -250,8 +250,8 @@ MonoBehaviour:
   woodDamper: 15
   woodLinearDrag: 1
   woodAngularDrag: 2
-  roadDefaultBreakForce: 300
+  roadDefaultBreakForce: 340
   woodDefaultBreakForce: 800
-  roadMinBreakForce: 300
+  roadMinBreakForce: 340
   woodMinBreakForce: 800
   woodStrengthMultiplier: 2
