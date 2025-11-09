@@ -15,9 +15,9 @@ public class FinishZone : MonoBehaviour
 
  [Header("UI Texts")] 
  public TMP_Text completeMessageTMP; // Texto solo para el panel de completo
- public TMP_Text messageTMP; // Texto general (opcional, no se usa para incompleto)
+ public TMP_Text messageTMP; // Texto general (usado para el panel incompleto)
  public string successMessage = "MONEDAS RECOLECTADAS: {0}";
- public string missingCoinsMessage = "MONEDAS FALTANTES: {0}";
+ public string missingCoinsMessage = "MONEDAS NECESARIAS: {0}"; // mostrar la cantidad requerida
 
  [Header("UI Elements to Hide on Finish")] 
  public GameObject CoinCounterUI; // contador de monedas
@@ -78,8 +78,8 @@ public class FinishZone : MonoBehaviour
  int missing = Mathf.Max(0, requiredCoins - current);
  _success = (missing ==0);
  AudioController.instance.CarStopMovementSfx();
- // Pasa el texto ya formateado; solo se mostrará en el panel de completo
- string msg = _success ? string.Format(successMessage, current) : string.Format(missingCoinsMessage, missing);
+ // Pasa el texto ya formateado
+ string msg = _success ? string.Format(successMessage, current) : string.Format(missingCoinsMessage, requiredCoins);
  ShowFinishUI(_success, msg);
  }
 
@@ -93,8 +93,9 @@ public class FinishZone : MonoBehaviour
  {
  if (incompletePanel) incompletePanel.SetActive(false);
  if (completePanel) completePanel.SetActive(true);
- // Mostrar mensaje solo en panel de completo
+ // Mensajes: éxito en panel completo; limpiar el de incompleto
  if (completeMessageTMP) completeMessageTMP.text = text;
+ if (messageTMP) messageTMP.text = string.Empty;
  AudioController.instance.WinSound();
  // Registrar progreso
  LevelsSelector.RegisterLevelCompleted(_currentScene);
@@ -103,7 +104,9 @@ public class FinishZone : MonoBehaviour
  {
  if (completePanel) completePanel.SetActive(false);
  if (incompletePanel) incompletePanel.SetActive(true);
- // No mostrar mensaje de éxito en panel incompleto
+ // Mensaje para incompleto: mostrar cantidad necesaria
+ if (messageTMP) messageTMP.text = text;
+ // Asegurar que el de completo quede vacío
  if (completeMessageTMP) completeMessageTMP.text = string.Empty;
  AudioController.instance.DeathSound();
  }

@@ -15,12 +15,12 @@ MonoBehaviour:
   vuforia:
     vuforiaLicenseKey: 
     ufoLicenseKey: QWVFVGR1di8vLy8vQUFBQUtBc05sQWhJbkV1TG50STRPN2FSc204ZGhOelRzSWtSVGdxRHh6YzZBeHFhUzNtaGRrekdCTW54UFpFa2c3TDJqTmxZU1BYVG5PcTJwb0pKdlNuT0U5RnZjV0wwQk9ubkQyNGMzcTVlVWFmazFVYm5jVHovemJjSi95SGlIazFQdyswRUZZUnFranM2ZXl3ZjlpM2xKUUI5dTNQUDlWYmxTbjhjTlBUNi9QSnFEUElYd1JDOEI1eUtlVGp0Q3dIV0tzSFpFOVB1R3kzK2IvYjVacExUQ1lCQkloVU1oRVZjNFlpV3R1L3BGZytUYzIzSGplYVhrdUgzUjh4cTJJTjZvOGxRVm9Bd29GUEIzS1JjdnozYUprT1p6Rk42M3o4Q0RaMVpZQ0J1OE82VmF4b1BoOGdtdk5JRWg3dVNRSnZjcit3TjFaM09FcE84QUNadm1aRUlqREd5dE8vY29PVXovK2V3VDljOEJZZkQ=
-    delayedInitialization: 0
+    delayedInitialization: 1
     cameraFocusModeSetting: 2
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
     virtualSceneScaleFactor: 1
-    modelTargetRecoWhileExtendedTracked: 1
+    modelTargetRecoWhileExtendedTracked: 0
     shareRecordingsInITunes: 0
     logLevel: 0
     version: 11.4.4
@@ -39,15 +39,15 @@ MonoBehaviour:
     numDivisions: 2
     videoBackgroundShader: {fileID: 4800000, guid: 144dfca22ac584ade9e538e24a5ddded, type: 3}
     unlitShader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-    videoBackgroundEnabled: 1
+    videoBackgroundEnabled: 0
   deviceTracker:
-    autoStartTracker: 1
-    arcoreRequirement: 1
-    autoImportArcore: 1
+    autoStartTracker: 0
+    arcoreRequirement: 0
+    autoImportArcore: 0
     thirdPartyARCoreClientDetected: 0
   playmode:
     mRecordingPath: 
-    playModeType: 0
+    playModeType: 1
     mSimulatorInputActionAsset: {fileID: -944628639613478452, guid: eae7022f5cfd04e8189b1f372421b225, type: 3}
   webcam:
     renderTextureLayer: 30

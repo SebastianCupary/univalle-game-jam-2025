@@ -4230,6 +4230,10 @@ PrefabInstance:
       propertyPath: contentRoot
       value: 
       objectReference: {fileID: 1438419718}
+    - target: {fileID: 2202453908615597878, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: 'slides.Array.data[7]'
+      value: 
+      objectReference: {fileID: 487188269, guid: 6905a1771817d324f82bba931de1da80, type: 3}
     - target: {fileID: 3171513401072826404, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -5

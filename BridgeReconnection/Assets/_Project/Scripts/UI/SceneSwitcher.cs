@@ -42,4 +42,9 @@ public class SceneSwitcher : MonoBehaviour
         Application.Quit();
         #endif
     }
+    public void credits()
+    {
+               AudioController.instance.ButtonPressed();
+        SceneManager.LoadScene("Creditos");
+    }
 }
