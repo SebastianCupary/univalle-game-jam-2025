@@ -138,7 +138,7 @@ MonoBehaviour:
   autoCalibrateOnStart: 0
   calibrationDuration: 1
   calibrationFactor: 0.75
-  colliderEndMargin: 0.14
+  colliderEndMargin: 0.28
   kind: 1
   woodUseSpring: 1
   woodSpring: 0

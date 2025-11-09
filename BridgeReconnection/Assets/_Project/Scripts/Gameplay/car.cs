@@ -53,6 +53,7 @@ public class car : MonoBehaviour
     // Llamado por UIManager al pulsar Start
     public void StartAutoDrive()
     {
+        AudioController.instance.CarMovementSfx();
         autoDrive = true;
         // Opcional: anular input del usuario
         moveInput = new Vector2(0f, autoDriveInput);
@@ -62,6 +63,8 @@ public class car : MonoBehaviour
 
     public void StopAutoDrive()
     {
+        AudioController.instance.CarStopMovementSfx();
+
         autoDrive = false;
         moveInput = Vector2.zero;
     }

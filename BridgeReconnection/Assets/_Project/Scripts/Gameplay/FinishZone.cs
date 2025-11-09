@@ -10,10 +10,14 @@ public class FinishZone : MonoBehaviour
  public bool stopCarOnEnter = true;
  [Tooltip("Si es true, el collider se usará como trigger")] public bool forceTrigger = true;
 
- [Header("UI")] public GameObject completePanel; // Panel opcional
- public TMP_Text messageTMP; // TMP
- public string successMessage = "Nivel completado";
- public string missingCoinsMessage = "Nivel Incompleto Monedas Faltantes: {0}";
+ [Header("UI - Panels")] public GameObject completePanel; // Panel de éxito
+ public GameObject incompletePanel; // Panel de nivel incompleto (reutiliza el de FallZone)
+
+ [Header("UI Texts")] 
+ public TMP_Text completeMessageTMP; // Texto solo para el panel de completo
+ public TMP_Text messageTMP; // Texto general (opcional, no se usa para incompleto)
+ public string successMessage = "MONEDAS RECOLECTADAS: {0}";
+ public string missingCoinsMessage = "MONEDAS FALTANTES: {0}";
 
  [Header("UI Elements to Hide on Finish")] 
  public GameObject CoinCounterUI; // contador de monedas
@@ -22,7 +26,12 @@ public class FinishZone : MonoBehaviour
  [Header("Finish Buttons")] 
  public Button restartButton; 
  public Button nextLevelButton; 
- public string nextLevelName; // si está vacío, no se mostrará el botón de siguiente nivel
+ public Button levelsButton;
+ public string nextLevelName; 
+ public string levelMenu = "Niveles";
+
+ private bool _success;
+ private string _currentScene;
 
  private void Reset()
  {
@@ -49,6 +58,13 @@ public class FinishZone : MonoBehaviour
  nextLevelButton.onClick.RemoveAllListeners();
  nextLevelButton.onClick.AddListener(LoadNextLevel);
  }
+
+ if (levelsButton != null)
+ {
+ levelsButton.onClick.RemoveAllListeners();
+ levelsButton.onClick.AddListener(LoadLevelsMenu);
+ }
+ _currentScene = SceneManager.GetActiveScene().name;
  }
 
  private void OnTriggerEnter(Collider other)
@@ -60,9 +76,11 @@ public class FinishZone : MonoBehaviour
 
  int current = CoinManager.Instance ? CoinManager.Instance.Coins :0;
  int missing = Mathf.Max(0, requiredCoins - current);
- bool success = missing ==0;
-
- ShowFinishUI(success, success ? successMessage : string.Format(missingCoinsMessage, missing));
+ _success = (missing ==0);
+ AudioController.instance.CarStopMovementSfx();
+ // Pasa el texto ya formateado; solo se mostrará en el panel de completo
+ string msg = _success ? string.Format(successMessage, current) : string.Format(missingCoinsMessage, missing);
+ ShowFinishUI(_success, msg);
  }
 
  private void ShowFinishUI(bool success, string text)
@@ -70,25 +88,53 @@ public class FinishZone : MonoBehaviour
  if (CoinCounterUI) CoinCounterUI.SetActive(false);
  if (CreationButtonsUI) CreationButtonsUI.SetActive(false);
 
- if (messageTMP) messageTMP.text = text;
+ // Mostrar panel según resultado
+ if (success)
+ {
+ if (incompletePanel) incompletePanel.SetActive(false);
  if (completePanel) completePanel.SetActive(true);
+ // Mostrar mensaje solo en panel de completo
+ if (completeMessageTMP) completeMessageTMP.text = text;
+ AudioController.instance.WinSound();
+ // Registrar progreso
+ LevelsSelector.RegisterLevelCompleted(_currentScene);
+ }
+ else
+ {
+ if (completePanel) completePanel.SetActive(false);
+ if (incompletePanel) incompletePanel.SetActive(true);
+ // No mostrar mensaje de éxito en panel incompleto
+ if (completeMessageTMP) completeMessageTMP.text = string.Empty;
+ AudioController.instance.DeathSound();
+ }
 
  // Botones
  if (restartButton) restartButton.gameObject.SetActive(true); // siempre disponible
-
  bool canGoNext = success && !string.IsNullOrEmpty(nextLevelName) && nextLevelButton != null;
  if (nextLevelButton) nextLevelButton.gameObject.SetActive(canGoNext);
  }
 
  public void RestartLevel()
  {
+ AudioController.instance.ButtonPressed();
+ UIManager.SkipObjectiveOnce = true; // evitar objetivo en reload
  var scene = SceneManager.GetActiveScene();
  SceneManager.LoadScene(scene.name);
  }
 
  public void LoadNextLevel()
  {
+ AudioController.instance.ButtonPressed();
  if (string.IsNullOrEmpty(nextLevelName)) return;
  SceneManager.LoadScene(nextLevelName);
+ }
+
+ public void LoadLevelsMenu()
+ {
+ AudioController.instance.ButtonPressed();
+ AudioController.instance.StopLevelMusic();
+ AudioController.instance.BackgroundMenuMusic();
+ if (string.IsNullOrEmpty(levelMenu)) return;
+ SceneManager.LoadScene(levelMenu);
  }
 }

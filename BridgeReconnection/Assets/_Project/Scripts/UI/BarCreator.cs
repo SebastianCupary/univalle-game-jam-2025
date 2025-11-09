@@ -22,6 +22,17 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     private readonly List<Bar> _roadHistory = new List<Bar>();
     private readonly List<Bar> _woodHistory = new List<Bar>();
 
+    // Permite consultar desde otros scripts si se está creando una barra
+    public bool IsCreating => BarCreationStarted;
+    // Cancelar creación actual desde UI u otros eventos (equivalente a clic derecho)
+    public void CancelCurrentBarCreation()
+    {
+        if (BarCreationStarted && CurrentBar != null)
+        {
+            DeleteCurrentBar();
+        }
+    }
+
     /// <summary>
     /// MÉTODO OnPointerDown CORREGIDO + Control de presupuesto
     /// </summary>
@@ -42,6 +53,7 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
                     return;
                 }
                 BarCreationStarted = true;
+                AudioController.instance.BarCreatorSound();
                 StartBarCreation(gridPosition);
             }
             // Si no se encuentra un punto en esa posición, no hace nada.
@@ -51,10 +63,12 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
             // La lógica para finalizar o cancelar la creación sigue igual.
             if (eventData.button == PointerEventData.InputButton.Left)
             {
+                AudioController.instance.BarCreatorSound();
                 FinishBarCreation();
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
+                AudioController.instance.BarCreatorSound();
                 DeleteCurrentBar();
             }
         }
@@ -215,6 +229,13 @@ public class BarCreator : MonoBehaviour, IPointerDownHandler
     // Usa el prefab actualmente seleccionado para decidir qué material deshacer.
     public void UndoLastBarOfCurrentKind()
     {
+        AudioController.instance.ButtonPressed();
+        // NUEVO: si se está creando una barra actualmente, cancelar igual que clic derecho
+        if (BarCreationStarted && CurrentBar != null)
+        {
+            DeleteCurrentBar();
+            return;
+        }
         var prefab = barToInstantiate;
         Bar.BarKind kind = Bar.BarKind.Road;
         if (prefab != null)

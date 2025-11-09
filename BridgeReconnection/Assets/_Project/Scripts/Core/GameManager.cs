@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale =0f; // Detiene física, animaciones y lógica basada en deltaTime
-        AudioListener.pause = true; // Pausa el audio
+        AudioListener.pause = false; // Pausa el audio
         IsPaused = true;
     }
 

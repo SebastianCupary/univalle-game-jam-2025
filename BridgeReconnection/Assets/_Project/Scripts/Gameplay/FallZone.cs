@@ -1,29 +1,50 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
 public class FallZone : MonoBehaviour
 {
- [Header("UI")] public GameObject completePanel;
- public TMP_Text messageTMP;
- public string fallMessage = "Nivel incompleto: te ca�ste";
+ [Header("UI")] public GameObject incompletePanel;
 
- [Header("Hide On Show")] public GameObject CoinCounterUI;
- public GameObject CreationButtonsUI;
 
- [Header("Buttons (opcional)")] public Button restartButton;
- public Button nextLevelButton; // ser� oculto al caer
+ public GameObject CreationUI;
+    private bool triggered;
 
- private bool triggered;
+    public Button restartButton;
 
- private void Reset()
+    public Button levelsButton;
+
+    public string levelMenu = "Niveles";
+
+    public TMPro.TMP_Text messageTMP;
+
+    private void Reset()
  {
  var col = GetComponent<Collider>();
  if (col) col.isTrigger = true;
  }
 
- private void OnTriggerEnter(Collider other)
+    private void Awake()
+    {
+   
+
+        // Registrar callbacks si hay botones asignados
+        if (restartButton != null)
+        {
+            restartButton.onClick.RemoveAllListeners();
+            restartButton.onClick.AddListener(RestartLevel);
+        }
+
+        if (levelsButton != null)
+        {
+            levelsButton.onClick.RemoveAllListeners();
+            levelsButton.onClick.AddListener(LoadLevelsMenu);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
  {
  if (triggered) return;
  var c = other.GetComponentInParent<car>();
@@ -42,12 +63,32 @@ public class FallZone : MonoBehaviour
  c.rigid.linearDamping =0f; // sin resistencia extra
  }
 
- // Mostrar UI de nivel incompleto
- if (CoinCounterUI) CoinCounterUI.SetActive(false);
- if (CreationButtonsUI) CreationButtonsUI.SetActive(false);
- if (messageTMP) messageTMP.text = fallMessage;
- if (completePanel) completePanel.SetActive(true);
- if (restartButton) restartButton.gameObject.SetActive(true);
- if (nextLevelButton) nextLevelButton.gameObject.SetActive(false);
- }
+        // Mostrar UI de nivel incompleto
+        if (CreationUI) CreationUI.SetActive(false);
+        if (incompletePanel) incompletePanel.SetActive(true);
+        //Ocultar Mensaje
+        messageTMP.text = "";
+        AudioController.instance.DeathSound();
+    }
+
+
+    public void LoadLevelsMenu()
+    {
+        AudioController.instance.ButtonPressed();
+        AudioController.instance.ButtonPressed();
+        AudioController.instance.StopLevelMusic();
+        AudioController.instance.BackgroundMenuMusic();
+        if (string.IsNullOrEmpty(levelMenu)) return;
+        SceneManager.LoadScene(levelMenu);
+    }
+
+    public void RestartLevel()
+    {
+        AudioController.instance.ButtonPressed();
+        // Evitar objetivo en reload
+        UIManager.SkipObjectiveOnce = true;
+        var scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
 }
