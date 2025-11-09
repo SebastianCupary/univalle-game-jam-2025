@@ -623,6 +623,7 @@ MonoBehaviour:
   inicioScene: Inicio
   ajustesButton: {fileID: 2102124930}
   ajustesScene: Ajustes
+  salirButton: {fileID: 0}
 --- !u!1 &274159590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,7 +1695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35.799995}
+  m_AnchoredPosition: {x: 0, y: -63.300003}
   m_SizeDelta: {x: 11.04, y: 0.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123410073
@@ -1969,8 +1970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -759, y: 70.67229}
-  m_SizeDelta: {x: 109.9807, y: 64.2845}
+  m_AnchoredPosition: {x: -762.85, y: 171}
+  m_SizeDelta: {x: 170.04, y: 106.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369941201
 MonoBehaviour:
@@ -2258,7 +2259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28.8}
+  m_AnchoredPosition: {x: 2.800003, y: -57.2}
   m_SizeDelta: {x: 11.04, y: 0.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816543765
@@ -2791,8 +2792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -759, y: -55.7}
-  m_SizeDelta: {x: 109.9807, y: 49.5399}
+  m_AnchoredPosition: {x: -771.8, y: -265.6}
+  m_SizeDelta: {x: 187.95, y: 86.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2102124930
 MonoBehaviour:

@@ -111,6 +111,7 @@ AudioController.instance.DeathSound();
  public void RestartLevel()
  {
  AudioController.instance.ButtonPressed();
+ UIManager.SkipObjectiveOnce = true; // evitar objetivo en reload
  var scene = SceneManager.GetActiveScene();
  SceneManager.LoadScene(scene.name);
  }

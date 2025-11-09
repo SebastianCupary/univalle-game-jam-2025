@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     public List<LevelObjective> levelObjectives = new List<LevelObjective>(); // lista por nivel
     public TMPro.TMP_Text objectiveTextTMP; // opcional (asignar si quieres texto)
 
+    [Header("Tutorial")] public TutorialPanel tutorialPanel; // tutorial
+    [Tooltip("Nombre de la escena que debe abrir el tutorial al cargar")] public string autoTutorialSceneName = "Nivel_1";
+
     [Header("Force Measurement Settings")]
     public float measurementDuration =3.0f; // segundos de muestreo
     [Range(0.1f,1f)] public float measurementFactor =0.75f; // factor recomendado
@@ -44,9 +47,12 @@ public class UIManager : MonoBehaviour
     [Header("Budget per Level")]
     public int levelBudget =1000; // Configurable por nivel en el inspector
 
-    public TutorialPanel tutorialPanel; // tutorial
-
     public string backScene = "Niveles";
+
+    // Flags estáticos para omitir panels tras reinicio
+    public static bool SkipObjectiveOnce = false;
+    public static bool SkipTutorialOnce = false;
+
     public void Start()
     {
         // Inicializa presupuesto del nivel (si existe BudgetManager en escena)
@@ -61,7 +67,23 @@ public class UIManager : MonoBehaviour
             RoadButton.onClick.Invoke();
         }
 
-        SetupObjectiveForCurrentScene();
+        // Objetivo
+        if (!SkipObjectiveOnce)
+        {
+            SetupObjectiveForCurrentScene();
+        }
+        else if (objectivePanel != null)
+        {
+            objectivePanel.SetActive(false);
+        }
+        SkipObjectiveOnce = false; // reset
+
+        // Tutorial (solo si no se pidió saltarlo en el reinicio)
+        if (!SkipTutorialOnce && tutorialPanel != null && string.Equals(SceneManager.GetActiveScene().name, autoTutorialSceneName, StringComparison.OrdinalIgnoreCase))
+        {
+            tutorialPanel.Open();
+        }
+        SkipTutorialOnce = false; // reset
     }
 
     private void SetupObjectiveForCurrentScene()
@@ -144,6 +166,8 @@ public class UIManager : MonoBehaviour
     {
         AudioController.instance.ButtonPressed();
         AudioController.instance.CarStopMovementSfx();
+        SkipObjectiveOnce = true; // evitar objetivo
+        SkipTutorialOnce = true; // evitar tutorial
         SceneManager.LoadScene(levelName);
     }
     public void ChangeBar(int myBarType)

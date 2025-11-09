@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bd58d9019c6742e47afb68a532f58ffe
+guid: 33e8fed016852f4479e62042d57e64f6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,23 +110,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nivel completado_0
+      name: 20_0
       rect:
         serializedVersion: 2
-        x: 124
+        x: 0
         y: 0
-        width: 827
-        height: 888
+        width: 1268
+        height: 711
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b337b460c4e0a94d9cf09ce3821e6a4
-      internalID: -1866042762
+      spriteID: 6a0d65d9fce87e34990b787800834545
+      internalID: 514843812
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5d9aaba473c485a4fbb6df8d3843cff2
+    spriteID: 3e685040fcb369946b95077ad1b4ba6a
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +145,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      nivel completado_0: -1866042762
+      20_0: 514843812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,7 +10,6 @@ public class FallZone : MonoBehaviour
 
 
  public GameObject CreationUI;
-
     private bool triggered;
 
     public Button restartButton;
@@ -86,6 +85,8 @@ public class FallZone : MonoBehaviour
     public void RestartLevel()
     {
         AudioController.instance.ButtonPressed();
+        // Evitar objetivo en reload
+        UIManager.SkipObjectiveOnce = true;
         var scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
