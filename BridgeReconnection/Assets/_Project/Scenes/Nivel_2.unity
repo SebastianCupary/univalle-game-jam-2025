@@ -573,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 2202453908615597878, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: 'slides.Array.data[9]'
       value: 
-      objectReference: {fileID: -1597158834, guid: a572836742e9b0440bf77ef342f3d5f4, type: 3}
+      objectReference: {fileID: 487188269, guid: 6905a1771817d324f82bba931de1da80, type: 3}
     - target: {fileID: 2324719588223370314, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: m_text
       value: L
