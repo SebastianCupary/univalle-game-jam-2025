@@ -30,6 +30,9 @@ public class FinishZone : MonoBehaviour
  public string nextLevelName; 
  public string levelMenu = "Niveles";
 
+ private bool _success;
+ private string _currentScene;
+
  private void Reset()
  {
  var col = GetComponent<Collider>();
@@ -61,6 +64,7 @@ public class FinishZone : MonoBehaviour
  levelsButton.onClick.RemoveAllListeners();
  levelsButton.onClick.AddListener(LoadLevelsMenu);
  }
+ _currentScene = SceneManager.GetActiveScene().name;
  }
 
  private void OnTriggerEnter(Collider other)
@@ -72,11 +76,11 @@ public class FinishZone : MonoBehaviour
 
  int current = CoinManager.Instance ? CoinManager.Instance.Coins :0;
  int missing = Mathf.Max(0, requiredCoins - current);
- bool success = missing ==0;
+ _success = (missing ==0);
  AudioController.instance.CarStopMovementSfx();
  // Pasa el texto ya formateado; solo se mostrará en el panel de completo
- string msg = success ? string.Format(successMessage, current) : string.Format(missingCoinsMessage, missing);
- ShowFinishUI(success, msg);
+ string msg = _success ? string.Format(successMessage, current) : string.Format(missingCoinsMessage, missing);
+ ShowFinishUI(_success, msg);
  }
 
  private void ShowFinishUI(bool success, string text)
@@ -92,14 +96,16 @@ public class FinishZone : MonoBehaviour
  // Mostrar mensaje solo en panel de completo
  if (completeMessageTMP) completeMessageTMP.text = text;
  AudioController.instance.WinSound();
-        }
+ // Registrar progreso
+ LevelsSelector.RegisterLevelCompleted(_currentScene);
+ }
  else
  {
  if (completePanel) completePanel.SetActive(false);
  if (incompletePanel) incompletePanel.SetActive(true);
  // No mostrar mensaje de éxito en panel incompleto
  if (completeMessageTMP) completeMessageTMP.text = string.Empty;
-AudioController.instance.DeathSound();
+ AudioController.instance.DeathSound();
  }
 
  // Botones
