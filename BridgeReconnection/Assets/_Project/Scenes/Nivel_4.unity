@@ -491,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6555db5bc8b93f3449959cb28d4c7ef2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 114
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6555db5bc8b93f3449959cb28d4c7ef2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -570,8 +570,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000004, y: 0.98661536, z: 0.8402811}
-  m_Center: {x: 0.00000004431312, y: -0.005777818, z: -0.02828509}
+  m_Size: {x: 2.2305603, y: 0.98661536, z: 0.8402811}
+  m_Center: {x: -0.02928938, y: -0.005777818, z: -0.02828509}
 --- !u!1 &76553810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,7 +2033,7 @@ Transform:
   m_GameObject: {fileID: 1167464359}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.96, y: 2.96, z: -2.85}
+  m_LocalPosition: {x: -1.616, y: 2.086, z: -2.85}
   m_LocalScale: {x: 0.47851, y: 0.07072378, z: 0.47851}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2364,6 +2364,8 @@ MonoBehaviour:
     objectiveSprite: {fileID: -1418111351, guid: 1b9c05442c28b5048b81aaf62dad0e4a, type: 3}
     objectiveText: 
   objectiveTextTMP: {fileID: 0}
+  tutorialPanel: {fileID: 0}
+  autoTutorialSceneName: Nivel_1
   measurementDuration: 3
   measurementFactor: 0.75
   applyBreakForceAfterMeasure: 0
@@ -2373,7 +2375,6 @@ MonoBehaviour:
   carController: {fileID: 197674675}
   CreationOptionsUI: {fileID: 2078432781}
   levelBudget: 2100
-  tutorialPanel: {fileID: 0}
   backScene: Niveles
 --- !u!4 &1456108633
 Transform:
@@ -2864,6 +2865,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 7859156678399963686, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8152744132267687602, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: barParent
       value: 
@@ -3208,8 +3213,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.5306053, y: 1, z: 0.9999998}
+  m_Center: {x: 0.07759665, y: 0, z: -3.628904e-16}
 --- !u!4 &2080008582
 Transform:
   m_ObjectHideFlags: 0

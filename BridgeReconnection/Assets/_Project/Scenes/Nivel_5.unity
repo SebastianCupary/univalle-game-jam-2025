@@ -1841,6 +1841,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 7859156678399963686, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8152744132267687602, guid: 59472b36bac714e4fa495846fd3ea6f2, type: 3}
       propertyPath: barParent
       value: 
@@ -3065,6 +3069,8 @@ MonoBehaviour:
     objectiveSprite: {fileID: -1418111351, guid: 1b9c05442c28b5048b81aaf62dad0e4a, type: 3}
     objectiveText: 
   objectiveTextTMP: {fileID: 0}
+  tutorialPanel: {fileID: 0}
+  autoTutorialSceneName: Nivel_1
   measurementDuration: 3
   measurementFactor: 0.75
   applyBreakForceAfterMeasure: 0
@@ -3074,7 +3080,6 @@ MonoBehaviour:
   carController: {fileID: 2015735192}
   CreationOptionsUI: {fileID: 683061421}
   levelBudget: 2000
-  tutorialPanel: {fileID: 0}
   backScene: Niveles
 --- !u!1001 &1054084248
 PrefabInstance:
